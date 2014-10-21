@@ -1,0 +1,5 @@
+[user]
+	name = Stijn Meurkens
+	email = meurkens@gmail.com
+[core]
+  editor = /usr/local/bin/vim
