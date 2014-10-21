@@ -38,10 +38,8 @@ alias ls="ls -G"
 # ruby
 eval "$(rbenv init -)"
 export PATH="./bin:$PATH"
-alias bundle="bundle install --binstubs"
 
 # vim
-alias vim='mvim -v'
 alias vi='vim'
 
 # git
