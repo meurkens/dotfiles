@@ -57,3 +57,14 @@ alias gm='git merge --no-edit'
 alias gs='git status -sb'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gr='cd $(git rev-parse --show-toplevel)'
+
+# new tabs go to same directory
+
+function chpwd {
+  local SEARCH=' '
+  local REPLACE='%20'
+  local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+  printf '\e]7;%s\a' "$PWD_URL"
+}
+
+chpwd
