@@ -38,6 +38,7 @@ alias ls="ls -G"
 # ruby
 eval "$(rbenv init -)"
 export PATH="./bin:$PATH"
+alias powdir='ln -s $(pwd) ~/.pow'
 
 # vim
 alias vi='vim'
