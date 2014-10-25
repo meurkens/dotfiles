@@ -45,6 +45,10 @@ map <leader>a :b#<cr>
 map <leader>t :CtrlP<CR>
 nmap <silent> <Leader>/ :noh<CR>
 
+" map tcomment
+map <leader>d gcc
+vmap <leader>d gc
+
 " Trailer trash
 map <leader>s :Trailer<cr>
 map <leader>sa :TrailerTrim<cr>
