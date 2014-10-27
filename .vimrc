@@ -1,39 +1,35 @@
 "==========================================================
 " Vundle
 "==========================================================
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'csexton/trailertrash.vim'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tomtom/tcomment_vim'
+Plug 'kien/ctrlp.vim'
+Plug 'thoughtbot/vim-rspec'
+
+" Filetypes
+Plug 'kchmck/vim-coffee-script'
+Plug 'nono/vim-handlebars'
+Plug 'slim-template/vim-slim'
+Plug 'mtscout6/vim-cjsx'
+
+" Color schemes
+Plug 'tomasr/molokai'
+Plug 'nanotech/jellybeans.vim'
+
+call plug#end()
+
 set nocompatible
-filetype off
 
 set encoding=utf-8
 set t_Co=256
 set ttyfast
 set lazyredraw
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'csexton/trailertrash.vim'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'thoughtbot/vim-rspec'
-
-" Filetypes
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'nono/vim-handlebars'
-Plugin 'slim-template/vim-slim'
-Plugin 'mtscout6/vim-cjsx'
-
-" Color schemes
-Plugin 'tomasr/molokai'
-Plugin 'nanotech/jellybeans.vim'
-
-call vundle#end()
-filetype plugin indent on
 
 "==========================================================
 " Mappings
