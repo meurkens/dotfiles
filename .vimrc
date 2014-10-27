@@ -4,6 +4,11 @@
 set nocompatible
 filetype off
 
+set encoding=utf-8
+set t_Co=256
+set ttyfast
+set lazyredraw
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -15,6 +20,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'thoughtbot/vim-rspec'
 
 " Filetypes
 Plugin 'kchmck/vim-coffee-script'
@@ -37,13 +43,17 @@ let mapleader=","
 noremap \ ,
 
 map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>bi :source ~/.vimrc<CR>
+map <Leader>bi :source ~/.vimrc<CR>:PluginInstall<CR>
 map <Leader>c :top split ~/Dropbox/Notities/cheatsheet.markdown<cr>
 map <leader>q :quit<cr>
 map <leader>w :write<cr>
 map <leader>a :b#<cr>
 map <leader>t :CtrlP<CR>
 nmap <silent> <Leader>/ :noh<CR>
+
+" map tcomment
+map <leader>d gcc
+vmap <leader>d gc
 
 " Trailer trash
 map <leader>s :Trailer<cr>
@@ -58,6 +68,13 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+
+" RSpec.vim
+map <Leader>rf :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
+
 
 "==========================================================
 " Settings
