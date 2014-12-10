@@ -101,3 +101,5 @@ rbenv_prompt_string() {
 }
 
 PS1=$'\n'"%{$fg_bold[yellow]%}%~%{$reset_color%}"'$(git_prompt_string)$(rbenv_prompt_string)'$'\n'"> "
+
+source ~/.zshenv
