@@ -11,6 +11,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tomtom/tcomment_vim'
 Plug 'kien/ctrlp.vim'
 Plug 'thoughtbot/vim-rspec'
+Plug 'amdt/vim-niji'
 
 " Filetypes
 Plug 'kchmck/vim-coffee-script'
@@ -39,7 +40,7 @@ let mapleader=","
 noremap \ ,
 
 map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>bi :source ~/.vimrc<CR>:PluginInstall<CR>
+map <Leader>bi :source ~/.vimrc<CR>:PlugInstall<CR>
 map <Leader>c :top split ~/Dropbox/Notities/cheatsheet.markdown<cr>
 map <leader>q :quit<cr>
 map <leader>w :write<cr>
