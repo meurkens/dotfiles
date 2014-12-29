@@ -4,14 +4,16 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'amdt/vim-niji'
 Plug 'csexton/trailertrash.vim'
 Plug 'ervandew/supertab'
+Plug 'kien/ctrlp.vim'
+Plug 'benmills/vimux'
+Plug 'meurkens/vim-rspec'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
-Plug 'tomtom/tcomment_vim'
-Plug 'kien/ctrlp.vim'
-Plug 'thoughtbot/vim-rspec'
-Plug 'amdt/vim-niji'
 
 " Filetypes
 Plug 'kchmck/vim-coffee-script'
@@ -72,6 +74,17 @@ map <Leader>rs :call RunNearestSpec()<CR>
 map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 
+" Vimux
+function! VimuxSlime()
+  call VimuxSendText(@v)
+  call VimuxSendKeys("Enter")
+endfunction
+
+map  <Leader>vq :VimuxCloseRunner<CR>
+map  <Leader>vx :VimuxInterruptRunner<CR>
+map  <Leader>vl :VimuxRunLastCommand<CR>
+vmap <Leader>vs "vy :call VimuxSlime()<CR>
+nmap <Leader>vs vip<Leader>vs<CR>
 
 "==========================================================
 " Settings
@@ -116,6 +129,10 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
+
+" Vimux in vertical split
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "40"
 
 " Search options
 set hlsearch
