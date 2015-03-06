@@ -132,7 +132,7 @@ endif
 
 " Vimux in vertical split
 let g:VimuxOrientation = "h"
-let g:VimuxHeight = "40"
+let g:VimuxHeight = "25"
 
 " Search options
 set hlsearch
@@ -151,3 +151,7 @@ set clipboard=unnamed
 set visualbell
 
 color jellybeans
+
+" Resize all windows to optimum distribution whenever Vim itself (the
+" terminal window it lives in) is resized.
+autocmd VimResized * wincmd =
