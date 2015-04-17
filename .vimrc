@@ -14,6 +14,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
+Plug 'godlygeek/tabular'
 
 " Filetypes
 Plug 'kchmck/vim-coffee-script'
@@ -142,6 +143,7 @@ set ignorecase
 set laststatus=2                  "Show statusbar
 set number                        "Linenumbers
 set nowrap
+set winwidth=100 "active window is at least this pixels wide
 
 " Access system clipboard
 set clipboard=unnamed
