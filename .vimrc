@@ -143,7 +143,9 @@ set ignorecase
 set laststatus=2                  "Show statusbar
 set number                        "Linenumbers
 set nowrap
-set winwidth=100 "active window is at least this pixels wide
+set winwidth=90 "active window is at least this pixels wide
+autocmd WinEnter * wincmd =
+autocmd WinLeave * wincmd =
 
 " Access system clipboard
 set clipboard=unnamed
