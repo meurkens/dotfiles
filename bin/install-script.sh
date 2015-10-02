@@ -23,7 +23,7 @@ brew install heroku-toolkit
 brew install imagemagick
 brew install hub
 brew install macvim --override-system-vim
-brew install mongo
+brew install mongodb
 
 brew install mysql
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
@@ -59,11 +59,14 @@ brew cask install beamer
 brew cask install choosy
 brew cask install firefox
 brew cask install google-chrome
-brew cask install hipchat
+brew cask install harvest
+brew cask install slack
 brew cask install mailbox
+brew cask install sketch
 brew cask install spotify
 brew cask install subtitles
 brew cask install transmission
+brew cask install tunnelblick
 brew cask install virtualbox
 brew cask install vlc
 
@@ -97,17 +100,30 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 # fix find-on-page in safari
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool FALSE
 
-# todo: list app store downloads
-# harvest, doublepane, telephone
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
-# todo: sketch, omnifocus, pixelmator
+# Show the full URL in the address bar (note: this still hides the scheme)
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# Tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# Tap with two fingers to emulate right click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+
+# Enable three finger drag
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
+# todo: list app store downloads
+# doublepane, telephone
+
+# todo: pixelmator
 
 # todo: list settings that script can't do for me
 # 1password: install browser extensions
 # doublepane: keyboard settings
-# safari: uncheck 'open safe files after downloading'
-# safari: advanced; show full address, show develop menu
-# osx: tap to click, three finger drag
+# safari: advanced; show develop menu
 # osx: delete directories from finder pane
 # osx: display settings; do not auto adjust brightness
 # osx: keyboard settings; tab to all controls, caps lock off
