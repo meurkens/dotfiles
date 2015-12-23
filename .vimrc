@@ -16,11 +16,14 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'godlygeek/tabular'
 
+
 " Filetypes
 Plug 'kchmck/vim-coffee-script'
 Plug 'nono/vim-handlebars'
 Plug 'slim-template/vim-slim'
 Plug 'mtscout6/vim-cjsx'
+Plug 'toyamarinyon/vim-swift'
+Plug 'tpope/vim-haml'
 
 " Color schemes
 Plug 'tomasr/molokai'
