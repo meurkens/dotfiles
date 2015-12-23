@@ -31,6 +31,7 @@ do
   ln -sFf "$src" "$dst"
 done
 
+
 # use zsh
 # =======
 
@@ -39,7 +40,10 @@ echo "Setting ZSH as default shell..."
 if ! grep -q "/usr/local/bin/zsh" /etc/shells; then
   echo "/usr/local/bin/zsh" | tee -a /etc/shells
 fi
+
+# TODO: asks for password, again. :-(
 sudo chsh -s /usr/local/bin/zsh
+
 
 # osx settings
 # ===========
@@ -48,11 +52,13 @@ echo "Configuring OS X..."
 
 sh ~/.dotfiles/.osx
 
-# todo: terminal theme
-# ====================
 
-# misc
-# ====
+# homedir
+# =======
+
+# TODO: make sure Dropbox is syncing
+
+echo "Setting up home dir..."
 
 # Link Dropbox music
 rm -rf ~/Music/iTunes
@@ -62,22 +68,8 @@ ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 mkdir ~/Code
 
 
-# todo: list app store downloads
-# telephone, pixelmator
-
-# todo: pixelmator
-
-# todo: list settings that script can't do for me
-# 1password: install browser extensions
-# spectacle: keyboard settings
-# safari: advanced; show develop menu
-# osx: delete directories from finder pane
-# osx: display settings; do not auto adjust brightness
-# osx: keyboard settings; tab to all controls, caps lock off
-# osx: keyboard settings; quick repeat
-# osx: sharing settings; computer name
-# terminal: pro-theme, source code pro font, no bells in profile->advanced
-
-# todo: install .ssh
-# ==================
-
+# list stuff that script can't do for me:
+# - install ssh
+# - app store downloads: telephone, pixelmator, xcode
+# - 1password: install browser extensions
+# - spectacle: keyboard settings
