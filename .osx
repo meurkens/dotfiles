@@ -7,10 +7,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Mobius"
-sudo scutil --set HostName "Mobius"
-sudo scutil --set LocalHostName "Mobius"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Mobius"
+echo "Enter the computer name:"
+read COMPUTER_NAME
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
 
 # Keyboard & trackpad
@@ -66,8 +68,12 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.dock wvous-tr-corner -int 10
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
+
 # Other
 # =====
+
+# Wipe all (default) app icons from the Dock
+defaults write com.apple.dock persistent-apps -array
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1

@@ -69,7 +69,8 @@ mkdir ~/Code
 
 
 # list stuff that script can't do for me:
+# - clear dock
 # - install ssh
-# - app store downloads: telephone, pixelmator, xcode
-# - 1password: install browser extensions
+# - app store downloads: telephone, pixelmator, xcode, letterspace, keynote
 # - spectacle: keyboard settings
+# - browser plugins: uBlock (origin), Pocket, 1Password
