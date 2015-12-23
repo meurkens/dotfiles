@@ -10,6 +10,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # homebrew
 # ========
 
+echo "Installing homebrew..."
+
 xcode-select --install
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew bundle --file=~/.dotfiles/Brewfile
@@ -29,19 +31,20 @@ do
   ln -sFf "$src" "$dst"
 done
 
-
-# todo: install .ssh
-# ==================
-
 # use zsh
 # =======
+
+echo "Setting ZSH as default shell..."
+
 if ! grep -q "/usr/local/bin/zsh" /etc/shells; then
-  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+  echo "/usr/local/bin/zsh" | tee -a /etc/shells
 fi
-chsh -s /usr/local/bin/zsh
+sudo chsh -s /usr/local/bin/zsh
 
 # osx settings
 # ===========
+
+echo "Configuring OS X..."
 
 sh ~/.dotfiles/.osx
 
@@ -74,3 +77,7 @@ mkdir ~/Code
 # osx: keyboard settings; quick repeat
 # osx: sharing settings; computer name
 # terminal: pro-theme, source code pro font, no bells in profile->advanced
+
+# todo: install .ssh
+# ==================
+
