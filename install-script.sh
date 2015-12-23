@@ -14,8 +14,8 @@ echo "Installing homebrew..."
 
 xcode-select --install
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew bundle --file=~/.dotfiles/Brewfile
-brew cleanup
+brew bundle --file=~/.dotfiles/Brewfile > /dev/null
+brew cleanup > /dev/null 2>&1
 
 
 # install dotfiles
@@ -27,6 +27,7 @@ DOTFILES_DIR=$(pwd -P)
 
 for src in $(find -H "$DOTFILES_DIR" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
 do
+  echo "  - .$(basename "${src%.*}")"
   dst="$HOME/.$(basename "${src%.*}")"
   ln -sFf "$src" "$dst"
 done
@@ -69,7 +70,6 @@ mkdir ~/Code
 
 
 # list stuff that script can't do for me:
-# - clear dock
 # - install ssh
 # - app store downloads: telephone, pixelmator, xcode, letterspace, keynote
 # - spectacle: keyboard settings
