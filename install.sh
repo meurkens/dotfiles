@@ -19,7 +19,7 @@ brew cleanup > /dev/null 2>&1
 
 
 # install dotfiles
-# =====================
+# ================
 
 echo "Installing dotfiles..."
 
@@ -31,6 +31,13 @@ do
   dst="$HOME/.$(basename "${src%.*}")"
   ln -sFf "$src" "$dst"
 done
+
+# vim plugins
+# ===========
+
+echo "Installing vim plugins..."
+
+vim +PlugInstall +qall!
 
 
 # use zsh
