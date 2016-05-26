@@ -4,10 +4,16 @@ bind C-a send-prefix
 
 set-window-option -g mode-keys vi
 
+# Fix for tmux/tmux#108 on github. OSX freezes after quiting.
+set -g status-interval 0
+
+# Fix OS X `open` command, and enable `pbcopy`/`pbpast`
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 
-bind r source-file ${HOME}/.tmux.conf \; display-message "source-file reloaded"
-bind c new-window -c "#{pane_current_path}"
+# Copy and paste to/from clipboard
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 set -g status-left-length 20
 set -g status-right-length 50
@@ -26,8 +32,8 @@ set -g status-utf8 on
 set -g status-left ""
 set -g status-right "#{pane_current_command} ∙ #{pane_current_path} ∙ %d %b %R "
 
-# Fix for tmux/tmux#108 on github. OSX freezes after quiting.
-set -g status-interval 0
+bind r source-file ${HOME}/.tmux.conf \; display-message "source-file reloaded"
+bind c new-window -c "#{pane_current_path}"
 
 unbind Up
 unbind Down
