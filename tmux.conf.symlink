@@ -28,7 +28,6 @@ set -g window-status-current-style "bg=colour234,fg=colour160,bright"
 set -g window-status-activity-style "bg=colour234,fg=colour246,blink"
 set -g window-status-separator "   "
 
-set -g status-utf8 on
 set -g status-left ""
 set -g status-right "#{pane_current_command} ∙ #{pane_current_path} ∙ %d %b %R "
 
