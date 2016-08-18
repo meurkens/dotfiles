@@ -34,9 +34,9 @@ echo "Creating Code directory..."
 
 mkdir ~/Code
 
-echo "Configuring OS X settings..."
+echo "Configuring macOS settings..."
 
-sh ./.osx
+sh ./.macos
 
 echo "Installing dotfiles..."
 
@@ -50,12 +50,18 @@ do
   fi
 done
 
+read -p "Press [Enter] after Dropbox file structure has loaded, otherwise quit using Ctrl-C..."
+
+echo "Linking iTunes music..."
+
+rm -rf ~/Music/iTunes
+ln -s ~/Dropbox/Appdata/iTunes ~/Music/
+
 # TODO
 # - make instructions to load from github
 
 cat <<--EOF
-# User should do:
-# - Set computer name
+# User should:
 # - Install app store programs
 #   - Pixelmator
 #   - Telephone
@@ -64,19 +70,16 @@ cat <<--EOF
 #   - Keynote
 # - Install source code pro font
 #   > https://github.com/adobe-fonts/source-code-pro/releases
-# - Install terminal theme
 # - Install safari extensions
 #   - 1Password
 #   - Pocket
 #   - uBlock
-# - Login to dropbox & sync iTunes music
-#   > rm -rf ~/Music/iTunes
-#   > ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 # - Customize finder pane
-# - Display setting: do not auto adjust brightness
 # - Configure apps
 #   - Spectacles
 #   - Arq
+#   - 1Password
 # - Contacts sync Google
+# - SSH keys
 EOF
 

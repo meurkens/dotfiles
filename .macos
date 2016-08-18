@@ -205,7 +205,6 @@ defaults write com.apple.screensaver askForPasswordDelay -int 10
 # Disable automatic brightness
 defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
 
-
 # Other
 # =====
 
