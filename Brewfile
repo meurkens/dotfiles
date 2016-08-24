@@ -1,6 +1,7 @@
-tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
 
 cask 'dropbox'
 
@@ -43,3 +44,5 @@ cask 'subtitles'
 cask 'transmission'
 cask 'vlc'
 cask 'whatsapp'
+
+cask 'font-source-code-pro'

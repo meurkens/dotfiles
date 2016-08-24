@@ -68,8 +68,6 @@ cat <<--EOF
 #   - XCode
 #   - Letterspace
 #   - Keynote
-# - Install source code pro font
-#   > https://github.com/adobe-fonts/source-code-pro/releases
 # - Install safari extensions
 #   - 1Password
 #   - Pocket
