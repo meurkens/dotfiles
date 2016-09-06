@@ -43,6 +43,5 @@ cask 'spotify'
 cask 'subtitles'
 cask 'transmission'
 cask 'vlc'
-cask 'whatsapp'
 
 cask 'font-source-code-pro'

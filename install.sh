@@ -40,15 +40,20 @@ sh ./.macos
 
 echo "Installing dotfiles..."
 
+cd $HOME
 for src in $(find -H "./" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
 do
-  dst="~/.$(basename "${src%.*}")"
+  dst="$HOME/.$(basename "${src%.*}")"
   rm -rf "$dst"
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  if [ -f "$src" -o -d "$src" -o -L "$src" ]
   then
     ln -s "$src" "$dst"
   fi
 done
+
+echo "Configuring vim..."
+
+vim +PlugInstall +qa!
 
 read -p "Press [Enter] after Dropbox file structure has loaded, otherwise quit using Ctrl-C..."
 
