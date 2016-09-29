@@ -27,6 +27,7 @@ brew 'zsh'
 
 cask '1password'
 cask 'appcleaner'
+cask 'arq'
 cask 'atom'
 cask 'beamer'
 cask 'choosy'
