@@ -34,6 +34,10 @@ echo "Creating Code directory..."
 
 mkdir ~/Code
 
+echo "Installing rbenv-vars..."
+
+git clone https://github.com/rbenv/rbenv-vars.git $(rbenv root)/plugins/rbenv-vars
+
 echo "Configuring macOS settings..."
 
 sh ./.macos
