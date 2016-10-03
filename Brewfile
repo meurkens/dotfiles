@@ -43,6 +43,8 @@ cask 'spectacle'
 cask 'spotify'
 cask 'subtitles'
 cask 'transmission'
+cask 'tripmode'
+cask 'tunnelblick'
 cask 'vlc'
 
 cask 'font-source-code-pro'
