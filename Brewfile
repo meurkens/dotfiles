@@ -10,8 +10,10 @@ brew 'git'
 brew 'heroku'
 brew 'hub'
 brew 'imagemagick'
+brew 'gnuplot', args: ['with-x11']
 brew 'macvim', args: ['with-override-system-vim']
 brew 'node'
+brew 'octave', args: ['without-qt5']
 brew 'phantomjs'
 brew 'postgresql'
 brew 'rbenv'
@@ -46,5 +48,6 @@ cask 'transmission'
 cask 'tripmode'
 cask 'tunnelblick'
 cask 'vlc'
+cask 'xquartz'
 
 cask 'font-source-code-pro'
