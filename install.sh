@@ -7,7 +7,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Installing xcode..."
 
-xcode-select --install
+read -p "Please install and run XCode first, Press [Enter] to continue"
 
 echo "Installing homebrew..."
 
