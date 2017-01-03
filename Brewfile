@@ -2,8 +2,10 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'homebrew/science'
 
 cask 'dropbox'
+cask 'xquartz'
 
 brew 'gdal'
 brew 'git'
@@ -48,6 +50,5 @@ cask 'transmission'
 cask 'tripmode'
 cask 'tunnelblick'
 cask 'vlc'
-cask 'xquartz'
 
 cask 'font-source-code-pro'
