@@ -1,0 +1,18 @@
+User should:
+- Install app store programs
+  - Pixelmator
+  - Telephone
+  - XCode
+  - Letterspace
+  - Keynote
+- Install safari extensions
+  - 1Password
+  - Pocket
+  - uBlock
+- Customize finder pane
+- Configure apps
+  - Spectacles
+  - Arq
+  - 1Password
+- Contacts sync Google
+- SSH keys

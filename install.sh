@@ -16,7 +16,7 @@ brew doctor
 brew update
 brew bundle
 brew cleanup -f
-brew cask cleanup -f
+brew cask cleanup
 
 echo "Configuring git..."
 
@@ -66,27 +66,5 @@ echo "Linking iTunes music..."
 rm -rf ~/Music/iTunes
 ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 
-# TODO
-# - make instructions to load from github
-
-cat <<--EOF
-# User should:
-# - Install app store programs
-#   - Pixelmator
-#   - Telephone
-#   - XCode
-#   - Letterspace
-#   - Keynote
-# - Install safari extensions
-#   - 1Password
-#   - Pocket
-#   - uBlock
-# - Customize finder pane
-# - Configure apps
-#   - Spectacles
-#   - Arq
-#   - 1Password
-# - Contacts sync Google
-# - SSH keys
-EOF
-
+echo "Linking further install instructions on Desktop"
+ln -s "$PWD/install.txt" ~/Desktop
