@@ -72,6 +72,9 @@ chpwd
 setopt prompt_subst
 autoload -U colors && colors
 
+# psql security
+alias pasql=psql --set=sslmode=require
+
 parse_git_branch() {
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
