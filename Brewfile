@@ -7,6 +7,7 @@ tap 'homebrew/science'
 cask 'dropbox'
 cask 'xquartz'
 
+brew 'carthage'
 brew 'gdal'
 brew 'git'
 brew 'heroku'
@@ -15,7 +16,7 @@ brew 'imagemagick'
 brew 'gnuplot', args: ['with-x11']
 brew 'macvim', args: ['with-override-system-vim']
 brew 'node'
-brew 'octave', args: ['without-qt5']
+# brew 'octave', args: ['without-qt5']
 brew 'phantomjs'
 brew 'postgresql'
 brew 'rbenv'
@@ -27,6 +28,7 @@ brew 'the_silver_searcher'
 brew 'tmux'
 brew 'unrar'
 brew 'wget'
+brew 'yarn'
 brew 'zsh'
 
 cask '1password'

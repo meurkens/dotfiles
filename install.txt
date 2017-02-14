@@ -1,18 +1,44 @@
-User should:
-- Install app store programs
-  - Pixelmator
-  - Telephone
-  - XCode
+- Reboot na afloop
+- System Prefrences
+  - map Capslock > Escape (on each keyboard)
+  - Disable spelling
+  - Three finger Swipe (accessibility!)
+  - Contacts, Cal sync google
+  - Show bluetooth, audio volume in menu bar
+- App Store
+  - Bear
   - Letterspace
-  - Keynote
-- Install safari extensions
-  - 1Password
-  - Pocket
-  - uBlock
-- Customize finder pane
-- Configure apps
-  - Spectacles
-  - Arq
-  - 1Password
-- Contacts sync Google
-- SSH keys
+  - Pixelmator
+  - Lastpass
+- 1Password
+  - Startup
+  - Chrome
+  - Safari
+  - mini icoon
+- Apps
+  - Spectacles settings
+  - Choosy settings
+  - Safari pocket
+  - Safari uBlock
+  - Safari autofill disable
+  - Safari notifications disable
+  - Chrome uBlock origin
+  - Chrome react dev tools
+  - Chrome autofill
+  - Xcode font
+  - Dash docsets
+- Credentials
+  - GPG installeren, keys uit 1password halen
+  - SSH config
+- Dev
+  - rbenv install 2.???
+  - rbenv global 2.???
+  - rbenv hehash
+  - gem install bundler
+- Misc
+  - Octave installatie (SLOW)
+- Customize
+  - Finder pane, add home folder
+  - Remove siri, airplay from menu bar
+  - Autohide dock
+  - Wallpaper

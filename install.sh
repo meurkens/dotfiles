@@ -8,6 +8,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Installing xcode..."
 
 read -p "Please install and run XCode first, Press [Enter] to continue"
+xcode-select --install
 
 echo "Installing homebrew..."
 
@@ -17,6 +18,10 @@ brew update
 brew bundle
 brew cleanup -f
 brew cask cleanup
+
+echo "Configuring postgres.."
+
+brew services start postgres
 
 echo "Configuring git..."
 
@@ -68,3 +73,10 @@ ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 
 echo "Linking further install instructions on Desktop"
 ln -s "$PWD/install.txt" ~/Desktop
+
+echo ""
+echo "----------------------------------------------"
+echo "  Automatic installation has been completed.  "
+echo "     You should now reboot your computer.     "
+echo "----------------------------------------------"
+echo ""
