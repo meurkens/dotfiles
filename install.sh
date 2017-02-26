@@ -71,8 +71,12 @@ echo "Linking iTunes music..."
 rm -rf ~/Music/iTunes
 ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 
-echo "Linking further install instructions on Desktop"
-ln -s "$PWD/install.txt" ~/Desktop
+echo "Linking GPG dir..."
+ln -s ~/Dropbox/Appdata/gnupg.symlink ~/.gnupg
+
+echo "Linking further install instructions on Desktop..."
+ln -s "$HOME/.dotfiles/install.txt" ~/Desktop
+
 
 echo ""
 echo "----------------------------------------------"

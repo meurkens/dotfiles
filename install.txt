@@ -5,6 +5,7 @@
   - Three finger Swipe (accessibility!)
   - Contacts, Cal sync google
   - Show bluetooth, audio volume in menu bar
+  - Disable notifications calendar
 - App Store
   - Bear
   - Letterspace
@@ -28,7 +29,6 @@
   - Xcode font
   - Dash docsets
 - Credentials
-  - GPG installeren, keys uit 1password halen
   - SSH config
 - Dev
   - rbenv install 2.???
