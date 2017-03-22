@@ -34,6 +34,9 @@ set -g status-right "#{pane_current_command} ∙ #{pane_current_path} ∙ %d %b 
 bind r source-file ${HOME}/.tmux.conf \; display-message "source-file reloaded"
 bind c new-window -c "#{pane_current_path}"
 
+unbind q
+bind q kill-session
+
 unbind Up
 unbind Down
 unbind Left
