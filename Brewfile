@@ -5,16 +5,19 @@ tap 'caskroom/fonts'
 tap 'homebrew/science'
 
 cask 'dropbox'
-cask 'xquartz'
+# cask 'xquartz'
 
 brew 'carthage'
-brew 'gdal'
+brew 'ffmpeg'
 brew 'git'
+brew 'gnupg2'
 brew 'heroku'
 brew 'hub'
 brew 'imagemagick'
-brew 'gnuplot', args: ['with-x11']
+brew 'leiningen'
+# brew 'gnuplot', args: ['with-x11']
 brew 'macvim', args: ['with-override-system-vim']
+brew 'mas'
 brew 'node'
 # brew 'octave', args: ['without-qt5']
 brew 'phantomjs'
@@ -29,6 +32,7 @@ brew 'tmux'
 brew 'unrar'
 brew 'wget'
 brew 'yarn'
+brew 'youtube-dl'
 brew 'zsh'
 
 cask '1password'
@@ -40,6 +44,7 @@ cask 'dash'
 cask 'disk-inventory-x'
 cask 'firefox'
 cask 'google-chrome'
+cask 'java'
 cask 'sketch'
 cask 'skype'
 cask 'slack'
@@ -52,3 +57,10 @@ cask 'tunnelblick'
 cask 'vlc'
 
 cask 'font-source-code-pro'
+
+mas 'Numbers', id: 409203825
+mas 'Pixelmator', id: 407963104
+mas 'Letterspace', id: 950145466
+mas 'Bear', id: 1091189122
+mas 'LastPass', id: 926036361
+mas 'Be Focused', id: 973134470
