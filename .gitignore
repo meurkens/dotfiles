@@ -2,3 +2,4 @@ vim.symlink/.netrwhist
 vim.symlink/plugged
 ssh.symlink/**/*
 !ssh.symlink/config
+.DS_Store

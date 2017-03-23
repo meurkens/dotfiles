@@ -6,11 +6,6 @@
   - Contacts, Cal sync google
   - Show bluetooth, audio volume in menu bar
   - Disable notifications calendar
-- App Store
-  - Bear
-  - Letterspace
-  - Pixelmator
-  - Lastpass
 - 1Password
   - Startup
   - Chrome
@@ -28,6 +23,8 @@
   - Chrome autofill
   - Xcode font
   - Dash docsets
+  - Be focused shortkey en startup
+  - Bear markdown compatability
 - Credentials
   - SSH config
 - Dev
