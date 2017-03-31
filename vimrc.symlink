@@ -15,6 +15,7 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'godlygeek/tabular'
 Plug 'euclio/gitignore.vim'
+Plug 'w0rp/ale'
 
 " Filetypes
 Plug 'kchmck/vim-coffee-script'
@@ -162,3 +163,6 @@ color jellybeans
 " Resize all windows to optimum distribution whenever Vim itself (the
 " terminal window it lives in) is resized.
 autocmd VimResized * wincmd =
+
+" Always open ALE gutter
+let g:ale_sign_column_always = 1
