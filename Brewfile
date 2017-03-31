@@ -63,4 +63,4 @@ mas 'Pixelmator', id: 407963104
 mas 'Letterspace', id: 950145466
 mas 'Bear', id: 1091189122
 mas 'LastPass', id: 926036361
-mas 'Be Focused', id: 973134470
+mas 'Be Focused Pro', id: 961632517
