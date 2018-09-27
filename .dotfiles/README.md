@@ -6,7 +6,7 @@ Inspired by these guides:
 
 Bootstrap along these lines:
 ```
-git clone --bare git@github.com:meurkens/dotfiles $HOME/.dotfiles.git
+git clone --bare https://github.com/meurkens/dotfiles $HOME/.dotfiles.git
 git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
-sh ~/.dotfiles/bootstrap.sh
+(cd .dotfiles; sh ./bootstrap.sh)
 ```

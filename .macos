@@ -37,8 +37,8 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 # Auto hide the dock
 defaults write com.apple.dock autohide -bool true
 
-# Use a dark menu bar / dock
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+# Empty dock
+defaults write com.apple.dock persistent-apps -array
 
 # TunnelBlick: Do not start on login
 defaults write net.tunnelblick.tunnelblick doNotLaunchOnLogin -bool yes
