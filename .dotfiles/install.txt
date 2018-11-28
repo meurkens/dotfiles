@@ -1,0 +1,20 @@
+System preferences:
+- Hostname
+- Display scale
+- Night shift
+- Password after 5s
+- Remove 'show recent apps form Dock'
+- Turn on firewall
+- Trackpad settings
+- Map capslock to escape
+- Do not disturb when display is sleeping
+
+Apps:
+- 1Password login
+- Chrome plugins
+- Colorscheme terminal
+- Tunnelblick config
+
+Various:
+- Ssh keys
+
