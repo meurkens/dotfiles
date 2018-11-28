@@ -5,7 +5,7 @@ export EDITOR="vim"
 # alias vim="mvim -v"
 alias vi=vim
 alias ls="ls -G"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 alias gb="git branch"
 alias gc="git commit"
