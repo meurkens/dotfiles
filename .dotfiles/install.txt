@@ -5,9 +5,17 @@ System preferences:
 - Password after 5s
 - Remove 'show recent apps form Dock'
 - Turn on firewall
+- Turn on FileVault
 - Trackpad settings
 - Map capslock to escape
 - Do not disturb when display is sleeping
+- Fast key repeat
+- Right mouse button
+- Remove items from dock
+- Hot corner
+- Automatic updates
+- Finder sidebar items
+- Keyboard Shortcuts > App Shortcuts > Google Chrome > Cmd-Option-H > 'Hide Others'
 
 Apps:
 - 1Password login
