@@ -9,4 +9,5 @@ Bootstrap along these lines:
 git clone --bare https://github.com/meurkens/dotfiles $HOME/.dotfiles.git
 git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
 (cd .dotfiles; sh ./bootstrap.sh)
+systemctl --user enable ssh-agent # on chromebook to fix ssh-agent
 ```
