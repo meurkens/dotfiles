@@ -9,7 +9,7 @@ export EDITOR="vim"
 # alias vim="mvim -v"
 alias vi=vim
 alias ls="ls -G"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 alias gb="git branch"
 alias gc="git commit"
@@ -22,6 +22,8 @@ alias gla="git log --all --graph --pretty=format:'%Cred%h%Creset %an: %s - %Cres
 alias gp="git push origin HEAD"
 alias gr='cd $(git rev-parse --show-toplevel)'
 alias gs="git status"
+
+alias egghead="youtube-dl -cio '%(autonumber)s-%(title)s.%(ext)s' -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --restrict-filenames"
 
 # Vi mode
 bindkey -v

@@ -207,5 +207,5 @@ augroup vimux
   autocmd FileType clojure nmap <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
 
   autocmd FileType ruby nmap <silent> <leader>rr :call RunSpec()<CR>
-  autocmd FileType ruby nmap <silent> <CR> :call RunSpec()<CR>
+  " autocmd FileType ruby nmap <silent> <CR> :call RunSpec()<CR>
 augroup END
