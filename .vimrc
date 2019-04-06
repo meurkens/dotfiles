@@ -14,8 +14,15 @@ Plug 'losingkeys/vim-niji'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-rails'
 Plug 'junegunn/vader.vim'
+Plug 'ElmCast/elm-vim'
 
 call plug#end()
+
+let g:ale_fixers = {
+      \   'javascript': ['prettier'],
+      \   'css': ['prettier'],
+      \}
+let g:ale_fix_on_save = 1
 
 set nocompatible
 set backupcopy=yes
@@ -30,6 +37,8 @@ set laststatus=2                  "Show statusbar
 set number
 set nowrap
 set ttyfast
+
+set backspace=indent,eol,start
 
 let g:ale_sign_column_always = 1
 

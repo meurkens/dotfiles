@@ -1,3 +1,7 @@
+export PATH="/home/meurkens/.linuxbrew/bin:$PATH"
+export MANPATH="/home/meurkens/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/meurkens/.linuxbrew/share/info:$INFOPATH"
+
 eval "$(rbenv init -)"
 export PATH="./bin:./node_modules/.bin:/usr/local/opt/postgresql@9.6/bin:$PATH"
 export EDITOR="vim"
