@@ -1,7 +1,7 @@
 tap 'homebrew/bundle'
 tap 'homebrew/core'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
 
 cask 'dropbox'
 
@@ -25,10 +25,11 @@ brew 'youtube-dl'
 brew 'zsh'
 
 cask '1password'
+cask 'android-file-transfer'
 cask 'appcleaner'
-cask 'beamer'
 cask 'dash'
 cask 'disk-inventory-x'
+cask 'docker'
 cask 'firefox'
 cask 'google-chrome'
 cask 'java'
@@ -39,15 +40,16 @@ cask 'slack'
 cask 'spectacle'
 cask 'spotify'
 cask 'standard-notes'
+cask 'teamviewer'
 cask 'transmission'
 cask 'tunnelblick'
+cask 'videostream'
 cask 'virtualbox'
-cask 'vlc'
 cask 'visual-studio-code'
+cask 'vlc'
 
 cask 'font-source-code-pro'
 
-mas 'Numbers', id: 409203825
 mas 'Pixelmator', id: 407963104
-mas 'Bear', id: 1091189122
-mas 'Be Focused Pro', id: 961632517
+mas 'Tomato One', id: 907364780
+mas 'Xcode', id: 497799835

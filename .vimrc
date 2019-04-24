@@ -15,6 +15,8 @@ Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-rails'
 Plug 'junegunn/vader.vim'
 Plug 'ElmCast/elm-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 
 call plug#end()
 
@@ -33,6 +35,10 @@ set nowrap
 set ttyfast
 
 let g:ale_sign_column_always = 1
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['tsserver', 'tslint']
+  \}
 
 let mapleader = ","
 map <leader>w :w<enter>
