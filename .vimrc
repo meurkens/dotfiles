@@ -17,6 +17,10 @@ Plug 'junegunn/vader.vim'
 Plug 'ElmCast/elm-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'keith/swift.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -35,10 +39,10 @@ set nowrap
 set ttyfast
 
 let g:ale_sign_column_always = 1
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['tsserver', 'tslint']
-  \}
+" let g:ale_linters = {
+"   \ 'javascript': ['eslint'],
+"   \ 'typescript': ['tsserver', 'tslint']
+"   \}
 
 let mapleader = ","
 map <leader>w :w<enter>
@@ -130,7 +134,7 @@ endfunction
 function! VimuxSlime(...)
   let l:cmd = a:0 == 1 ? a:1 : @v
 
-  call VimuxStartRepl()
+  " call VimuxStartRepl()
   call VimuxRunCommand(l:cmd)
 endfunction
 
@@ -194,6 +198,7 @@ endfunction
 nmap <silent> <leader>rz :call VimuxZoomRunner2()<CR>
 nmap <silent> <Leader>rv :call VimuxZoomVim()<CR>
 nmap <silent> <leader>rq :call VimuxCloseRunner()<CR>
+nmap <silent> <leader>rl :call VimuxRunLastCommand()<CR>
 
 augroup vimux
   autocmd!
@@ -205,5 +210,6 @@ augroup vimux
   autocmd FileType clojure nmap <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
 
   autocmd FileType ruby nmap <silent> <leader>rr :call RunSpec()<CR>
+  autocmd FileType ruby vmap <silent> <Leader>rc "vy :call VimuxSlime()<CR>
   " autocmd FileType ruby nmap <silent> <CR> :call RunSpec()<CR>
 augroup END
