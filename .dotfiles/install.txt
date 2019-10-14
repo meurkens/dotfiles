@@ -16,13 +16,16 @@ System preferences:
 - Automatic updates
 - Finder sidebar items
 - Keyboard Shortcuts > App Shortcuts > Google Chrome > Cmd-Option-H > 'Hide Others'
+- Keyboard Shortcuts for persona's in Chrome
+- Set wallpaper options
 
 Apps:
 - 1Password login
-- Chrome plugins
+- Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Pocket
 - Colorscheme terminal
 - Tunnelblick config
 
 Various:
 - Ssh keys
+
 

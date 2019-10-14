@@ -45,5 +45,8 @@ ln -s ~/Dropbox/Appdata/gnupg.symlink ~/.gnupg
 echo "Linking further install instructions on Desktop..."
 ln -s "$HOME/.dotfiles/install.txt" ~/Desktop
 
+echo "Linking inbox on Desktop..."
+ln -s ~/Dropbox/Inbox ~/Desktop/
+
 echo "Installation complete!"
 echo "Please reboot computer before continuing..."

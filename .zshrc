@@ -21,6 +21,8 @@ alias gs="git status"
 
 alias egghead="youtube-dl -cio '%(autonumber)s-%(title)s.%(ext)s' -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --restrict-filenames"
 
+alias vim="mvim -v"
+
 # Vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
