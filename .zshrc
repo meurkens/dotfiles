@@ -42,3 +42,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/
 
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+export ANDROID_SDK=/Users/meurkens/Library/Android/sdk
+export PATH=/Users/meurkens/Library/Android/sdk/platform-tools:$PATH
