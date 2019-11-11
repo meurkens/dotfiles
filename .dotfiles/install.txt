@@ -16,14 +16,17 @@ System preferences:
 - Automatic updates
 - Finder sidebar items
 - Keyboard Shortcuts > App Shortcuts > Google Chrome > Cmd-Option-H > 'Hide Others'
-- Keyboard Shortcuts for persona's in Chrome
-- Set wallpaper options
+- Keyboard Shortcuts for persona's in Chrome: Cmd-Shift-P / Cmd-Shift-O
+- Set wallpaper R118 G131 B150
+- Connect bluetooth keyboard
+- Bluetooth in menu bar
 
 Apps:
 - 1Password login
 - Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Pocket
 - Colorscheme terminal
 - Tunnelblick config
+- Fleetsmith
 
 Various:
 - Ssh keys
