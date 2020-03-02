@@ -38,10 +38,16 @@ set nowrap
 set ttyfast
 
 let g:ale_sign_column_always = 1
+let g:ale_linters = {
+  \ 'clojure': ['clj-kondo']
+  \ }
 " let g:ale_linters = {
 "   \ 'javascript': ['eslint'],
 "   \ 'typescript': ['tsserver', 'tslint']
 "   \}
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 let mapleader = ","
 map <leader>w :w<enter>
@@ -130,6 +136,10 @@ function! _VimuxUnzoomVim()
 endfunction
 
 " Vimux - Clojure
+
+" I don't know why this is 'g C-u' by default, but it messes up my repl
+let g:VimuxResetSequence = ""
+
 function! VimuxSlime(...)
   let l:cmd = a:0 == 1 ? a:1 : @v
 
