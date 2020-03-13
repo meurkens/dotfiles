@@ -26,8 +26,9 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # Autocompletion
-autoload -U compinit compdef
+autoload -U compinit compdef bashcompinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+bashcompinit
 compinit
 
 # Set working dir in prompt

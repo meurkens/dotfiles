@@ -39,12 +39,8 @@ set ttyfast
 
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
-  \ 'clojure': ['clj-kondo']
-  \ }
-" let g:ale_linters = {
-"   \ 'javascript': ['eslint'],
-"   \ 'typescript': ['tsserver', 'tslint']
-"   \}
+  \ 'clojure': ['clj-kondo'],
+  \}
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
