@@ -1,26 +1,23 @@
 call plug#begin('~/.vim/plugged')
+Plug 'ElmCast/elm-vim'
+Plug 'benmills/vimux'
+Plug 'guns/vim-clojure-static'
+Plug 'ianks/vim-tsx'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'w0rp/ale'
-Plug 'tpope/vim-eunuch'
-Plug 'benmills/vimux'
-Plug 'w0ng/vim-hybrid'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'guns/vim-clojure-static'
-Plug 'losingkeys/vim-niji'
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-rails'
-Plug 'junegunn/vader.vim'
-Plug 'ElmCast/elm-vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
-Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'keith/swift.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'losingkeys/vim-niji'
+Plug 'mxw/vim-jsx'
+Plug 'noahfrederick/vim-noctu'
+Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'slim-template/vim-slim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-
+Plug 'tpope/vim-rails'
+Plug 'w0rp/ale'
 call plug#end()
 
 set nocompatible
@@ -89,8 +86,7 @@ set ignorecase
 
 " Theming
 set background=dark
-let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+colorscheme dim
 
 " Access system clipboard
 set clipboard=unnamed
