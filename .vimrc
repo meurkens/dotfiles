@@ -9,7 +9,6 @@ Plug 'keith/swift.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'losingkeys/vim-niji'
 Plug 'mxw/vim-jsx'
-Plug 'noahfrederick/vim-noctu'
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'slim-template/vim-slim'
@@ -86,7 +85,7 @@ set ignorecase
 
 " Theming
 set background=dark
-colorscheme dim
+colorscheme noctu
 
 " Access system clipboard
 set clipboard=unnamed
