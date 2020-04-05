@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+function main {
+  git_status=$(current_dir_name)
+  my_branch_name=$(branch_name)
+  if [ ! -z "$my_branch_name" ]; then
+    git_status="$git_status:$my_branch_name"
+  fi
+  git_status="$(limit $git_status 40)"
+
+  echo "$git_status `current_time`"
+}
+
+function current_dir_name {
+  pwd | xargs -0 basename
+}
+
+function branch_name {
+  git branch --show-current 2>/dev/null
+}
+
+function current_time {
+  date "+%H:%M"
+}
+
+function limit {
+  local string=$1
+  local length=$2
+  if [ ${#string} -gt $length ]; then
+    echo "${string:0:$(($length - 3))}..."
+  else
+    echo "$string"
+  fi
+}
+
+main

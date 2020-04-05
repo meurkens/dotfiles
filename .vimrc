@@ -1,23 +1,27 @@
 call plug#begin('~/.vim/plugged')
-Plug 'ElmCast/elm-vim'
 Plug 'benmills/vimux'
-Plug 'guns/vim-clojure-static'
-Plug 'ianks/vim-tsx'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'keith/swift.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'losingkeys/vim-niji'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'slim-template/vim-slim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
 Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'losingkeys/vim-niji'
+
+"Filetypes
+Plug 'ElmCast/elm-vim'
+Plug 'guns/vim-clojure-static'
+Plug 'ianks/vim-tsx'
+Plug 'keith/swift.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-rails'
 call plug#end()
+
+let g:vim_jsx_pretty_colorful_config = 1
 
 set nocompatible
 set backupcopy=yes
@@ -32,6 +36,7 @@ set laststatus=2                  "Show statusbar
 set number
 set nowrap
 set ttyfast
+set incsearch
 
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
@@ -40,6 +45,8 @@ let g:ale_linters = {
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+let g:is_posix = 1
 
 let mapleader = ","
 map <leader>w :w<enter>
@@ -54,6 +61,8 @@ vmap <leader>d gc
 
 " Map reload vimrc
 map <leader>vi :source ~/.vimrc<CR>
+
+nmap <leader>h :ALEHover<CR>
 
 " Sane movement with wrap turned on
 nnoremap j gj
@@ -128,7 +137,7 @@ endfunction
 
 " Vimux - Clojure
 
-" I don't know why this is 'g C-u' by default, but it messes up my repl
+" I don't know why this is 'q C-u' by default, but it messes up my repl
 let g:VimuxResetSequence = ""
 
 function! VimuxSlime(...)
@@ -191,25 +200,29 @@ function! RunSpec()
   if match(bufname("%"), "_spec.rb$") != -1
     let s:current_spec = bufname("%") . ":" . line(".")
   endif
-  let s:command = "rspec " . s:current_spec
-  call VimuxRunCommand("clear; echo " . s:command . "; " . s:command)
+  if !exists("s:current_spec")
+    echo "No current spec defined, please run from a *_spec.rb file first."
+  else
+    let s:command = "rspec " . s:current_spec
+    call VimuxRunCommand("clear; echo " . s:command . "; " . s:command)
+  endif
 endfunction
 
 nmap <silent> <leader>rz :call VimuxZoomRunner2()<CR>
 nmap <silent> <Leader>rv :call VimuxZoomVim()<CR>
-nmap <silent> <leader>rq :call VimuxCloseRunner()<CR>
-nmap <silent> <leader>rl :call VimuxRunLastCommand()<CR>
+nmap <silent> <leader>rq :VimuxCloseRunner<CR>
+nmap <silent> <leader>rl :VimuxRunLastCommand<CR>
 
 augroup vimux
   autocmd!
 
-  autocmd FileType clojure nmap <silent> <Leader>rs :call VimuxStartRepl()<CR>
-  autocmd FileType clojure vmap <silent> <Leader>rl "vy :call VimuxSlime()<CR>
-  autocmd FileType clojure nmap <silent> <Leader>rl va(<Leader>rl<CR>
-  autocmd FileType clojure nmap <silent> <Leader>ro vap<Leader>rl<CR>
-  autocmd FileType clojure nmap <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
+  autocmd FileType clojure nmap <buffer> <silent> <Leader>rs :call VimuxStartRepl()<CR>
+  autocmd FileType clojure vmap <buffer> <silent> <CR> "vy :call VimuxSlime()<CR>
+  autocmd FileType clojure nmap <buffer> <silent> <CR> va(<CR>
+  autocmd FileType clojure nmap <buffer> <silent> <Leader><CR> vap<Leader>rl<CR>
+  autocmd FileType clojure nmap <buffer> <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
 
-  autocmd FileType ruby nmap <silent> <leader>rr :call RunSpec()<CR>
-  autocmd FileType ruby vmap <silent> <Leader>rc "vy :call VimuxSlime()<CR>
-  " autocmd FileType ruby nmap <silent> <CR> :call RunSpec()<CR>
+  autocmd FileType ruby vmap <buffer> <silent> <Leader>rc "vy :call VimuxSlime()<CR>
+  autocmd FileType ruby nmap <buffer> <silent> <CR> :call RunSpec()<CR>
+  autocmd FileType ruby nmap <buffer> <silent> <C-c> :VimuxInterruptRunner<CR>
 augroup END

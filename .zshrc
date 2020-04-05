@@ -1,5 +1,5 @@
 eval "$(rbenv init -)"
-export PATH="./bin:./node_modules/.bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
 export EDITOR="vim"
 
 alias vi=vim
