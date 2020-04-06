@@ -219,7 +219,7 @@ augroup vimux
   autocmd FileType clojure nmap <buffer> <silent> <Leader>rs :call VimuxStartRepl()<CR>
   autocmd FileType clojure vmap <buffer> <silent> <CR> "vy :call VimuxSlime()<CR>
   autocmd FileType clojure nmap <buffer> <silent> <CR> va(<CR>
-  autocmd FileType clojure nmap <buffer> <silent> <Leader><CR> vap<Leader>rl<CR>
+  autocmd FileType clojure nmap <buffer> <silent> <Leader><CR> vap<CR>
   autocmd FileType clojure nmap <buffer> <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
 
   autocmd FileType ruby vmap <buffer> <silent> <Leader>rc "vy :call VimuxSlime()<CR>
