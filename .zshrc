@@ -15,11 +15,10 @@ alias gco="git checkout"
 alias gd="git diff"
 alias gf="git fetch"
 alias gl="git log --branches --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gla="git log --all --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gla="gl --all"
 alias gp="git push origin HEAD"
-alias gr='cd $(git rev-parse --show-toplevel)'
-alias gs="git status"
-
+alias gr='git rev-parse --show-toplevel | xargs cd'
+alias gs="git status -sb"
 
 # Vi mode
 bindkey -v
