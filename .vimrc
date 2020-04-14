@@ -136,10 +136,6 @@ function! _VimuxUnzoomVim()
 endfunction
 
 " Vimux - Clojure
-
-" I don't know why this is 'q C-u' by default, but it messes up my repl
-let g:VimuxResetSequence = ""
-
 function! VimuxSlime(...)
   let l:cmd = a:0 == 1 ? a:1 : @v
 
@@ -195,16 +191,17 @@ function! _GetNamespace()
   endwhile
 endfunction
 
-" Vimux - Ruby
+" Vimux - Tests
 function! RunSpec()
   if match(bufname("%"), "_spec.rb$") != -1
-    let s:current_spec = bufname("%") . ":" . line(".")
+    let s:current_spec = "rspec " . bufname("%") . ":" . line(".")
+  elseif match(bufname("%"), '.test.jsx\?$') != -1
+    let s:current_spec = "jest " . bufname("%")
   endif
   if !exists("s:current_spec")
-    echo "No current spec defined, please run from a *_spec.rb file first."
+    echo "No current spec defined, please run from a test file first."
   else
-    let s:command = "rspec " . s:current_spec
-    call VimuxRunCommand("clear; echo " . s:command . "; " . s:command)
+    call VimuxRunCommand("clear; echo " . s:current_spec . "; " . s:current_spec)
   endif
 endfunction
 
@@ -212,6 +209,7 @@ nmap <silent> <leader>rz :call VimuxZoomRunner2()<CR>
 nmap <silent> <Leader>rv :call VimuxZoomVim()<CR>
 nmap <silent> <leader>rq :VimuxCloseRunner<CR>
 nmap <silent> <leader>rl :VimuxRunLastCommand<CR>
+nmap <silent> <C-c> :VimuxInterruptRunner<CR>
 
 augroup vimux
   autocmd!
@@ -223,6 +221,6 @@ augroup vimux
   autocmd FileType clojure nmap <buffer> <silent> <Leader>rn :call VimuxOpenNamespace()<CR>
 
   autocmd FileType ruby vmap <buffer> <silent> <Leader>rc "vy :call VimuxSlime()<CR>
-  autocmd FileType ruby nmap <buffer> <silent> <CR> :call RunSpec()<CR>
-  autocmd FileType ruby nmap <buffer> <silent> <C-c> :VimuxInterruptRunner<CR>
+
+  autocmd FileType ruby,javascript,typescript nmap <buffer> <silent> <CR> :call RunSpec()<CR>
 augroup END
