@@ -27,7 +27,8 @@ function limit {
   local string=$1
   local length=$2
   if [ ${#string} -gt $length ]; then
-    echo "${string:0:$(($length - 3))}..."
+    local trimmed_length=$(($length - 3))
+    echo "$(echo $string | cut -c1-$trimmed_length)..."
   else
     echo "$string"
   fi
