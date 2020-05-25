@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+read -p "OpenSubtitles username: " USER
+read -p "password: " PASS
+COMMAND="subliminal --opensubtitles $USER $PASS $@"
+echo $COMMAND
+eval $COMMAND
