@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 
+if [ ! -f "$HOME/.subl" ]; then
+  echo "Configuration file ~/.subl not found, will create now. (ctrl-C to cancel)"
+  read -p "Opensubtitles username: " USER
+  read -p "password: " PASS
+  echo "$USER $PASS" > ~/.subl
+  echo ""
+fi
+
 CREDENTIALS=$(cat ~/.subl)
 COMMAND="subliminal --opensubtitles $CREDENTIALS $@"
-echo $COMMAND
+echo "$COMMAND\n"
 eval $COMMAND
