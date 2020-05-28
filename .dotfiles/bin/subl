@@ -1,14 +1,32 @@
 #!/usr/bin/env sh
 
-if [ ! -f "$HOME/.subl" ]; then
-  echo "Configuration file ~/.subl not found, will create now. (ctrl-C to cancel)"
-  read -p "Opensubtitles username: " USER
-  read -p "password: " PASS
-  echo "$USER $PASS" > ~/.subl
-  echo ""
-fi
+check_subliminal() {
+  CMD=$(which subliminal)
+  if [ ! -x "$CMD" ]; then
+    echo "ERROR: \`subliminal\` is not found on your PATH."
+    echo "It might be installed using \`brew install subliminal\`."
+    exit 1
+  fi
+}
 
-CREDENTIALS=$(cat ~/.subl)
-COMMAND="subliminal --opensubtitles $CREDENTIALS $@"
-echo "$COMMAND\n"
-eval $COMMAND
+ensure_credentials() {
+  if [ ! -f "$HOME/.subl" ]; then
+    echo "Configuration file ~/.subl not found, will create now. (ctrl-C to cancel)"
+    read -p "Opensubtitles username: " USER
+    read -p "password: " PASS
+    echo "$USER $PASS" > ~/.subl
+    echo ""
+  fi
+}
+
+main() {
+  check_subliminal
+  ensure_credentials
+
+  CREDENTIALS=$(cat ~/.subl)
+  COMMAND="subliminal --opensubtitles $CREDENTIALS $@"
+  echo "$COMMAND\n"
+  eval $COMMAND
+}
+
+main
