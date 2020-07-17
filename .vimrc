@@ -7,8 +7,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" Plug 'losingkeys/vim-niji'
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'losingkeys/vim-niji'
 
 "Filetypes
 Plug 'ElmCast/elm-vim'
