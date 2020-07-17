@@ -23,6 +23,17 @@ call plug#end()
 
 let g:vim_jsx_pretty_colorful_config = 1
 
+let g:niji_dark_colours = [
+      \ ['12', 'NONE'],
+      \ ['6', 'NONE'],
+      \ ['3', 'NONE'],
+      \ ['4', 'NONE'],
+      \ ['11', 'NONE'],
+      \ ['2', 'NONE'],
+      \ ['13', 'NONE'],
+      \ ['14', 'NONE']
+      \ ]
+
 set nocompatible
 set backupcopy=yes
 set encoding=utf-8
