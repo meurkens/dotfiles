@@ -7,11 +7,13 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'losingkeys/vim-niji'
+" Plug 'losingkeys/vim-niji'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 "Filetypes
 Plug 'ElmCast/elm-vim'
 Plug 'guns/vim-clojure-static'
+" Plug 'vim-scripts/VimClojure'
 Plug 'ianks/vim-tsx'
 Plug 'keith/swift.vim'
 Plug 'leafgarland/typescript-vim'
@@ -62,9 +64,14 @@ let g:is_posix = 1
 let mapleader = ","
 map <leader>w :w<enter>
 map <leader>q :q<enter>
-
 map <leader>t :FZF<enter>
 nmap <silent> <Leader>/ :noh<CR>
+nmap <leader>e :Explore<CR>
+nmap <leader>ee :Explore<CR>
+nmap <leader>el :Lexplore<CR>
+nmap <leader>es :Sexplore<CR>
+nmap <leader>ev :Vexplore!<CR>
+nmap <leader>h :ALEHover<CR>
 
 " Map tcomment plugin
 map <leader>d gcc
@@ -73,7 +80,6 @@ vmap <leader>d gc
 " Map reload vimrc
 map <leader>vi :source ~/.vimrc<CR>
 
-nmap <leader>h :ALEHover<CR>
 
 " Sane movement with wrap turned on
 nnoremap j gj
@@ -233,5 +239,5 @@ augroup vimux
 
   autocmd FileType ruby vmap <buffer> <silent> <Leader>rc "vy :call VimuxSlime()<CR>
 
-  autocmd FileType ruby,javascript,typescript nmap <buffer> <silent> <CR> :call RunSpec()<CR>
+  autocmd FileType ruby,javascript,typescript,javascriptreact nmap <buffer> <silent> <CR> :call RunSpec()<CR>
 augroup END
