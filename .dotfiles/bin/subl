@@ -24,9 +24,10 @@ main() {
   ensure_credentials
 
   CREDENTIALS=$(cat ~/.subl)
-  COMMAND="subliminal --opensubtitles $CREDENTIALS $@"
+  COMMAND="subliminal --opensubtitles $CREDENTIALS $ARGS"
   echo "$COMMAND\n"
   eval $COMMAND
 }
 
+ARGS="$@"
 main
