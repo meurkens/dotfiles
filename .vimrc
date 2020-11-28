@@ -20,20 +20,13 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-rails'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 call plug#end()
 
 let g:vim_jsx_pretty_colorful_config = 1
 
-let g:niji_dark_colours = [
-      \ ['12', 'NONE'],
-      \ ['6', 'NONE'],
-      \ ['3', 'NONE'],
-      \ ['4', 'NONE'],
-      \ ['11', 'NONE'],
-      \ ['2', 'NONE'],
-      \ ['13', 'NONE'],
-      \ ['14', 'NONE']
-      \ ]
+let g:niji_dark_colours = [12, 6, 3, 4, 11, 2, 13, 14]
+call map(g:niji_dark_colours, { _, val -> [val, 'NONE'] })
 
 set nocompatible
 set backupcopy=yes
@@ -133,6 +126,7 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 map <leader>s :%s/\s\+$//g<CR>
+
 
 " Vimux
 function! VimuxZoomVim()
