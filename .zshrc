@@ -6,7 +6,6 @@ alias vi=vim
 alias ls="ls -G"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias btreset="blueutil -p 0 && sleep 1 && blueutil -p 1"
-alias vim="mvim -v"
 
 alias gb="git branch"
 alias gc="git commit"
@@ -38,8 +37,8 @@ ${PWD/#$HOME/~}
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
+. /home/linuxbrew/.linuxbrew/opt/asdf/etc/bash_completion.d/asdf.bash
 
 export ANDROID_SDK=/Users/meurkens/Library/Android/sdk
 export PATH=/Users/meurkens/Library/Android/sdk/platform-tools:$PATH

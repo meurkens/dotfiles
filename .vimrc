@@ -112,6 +112,10 @@ set clipboard=unnamed
 set splitbelow
 set splitright
 
+" Make backspace behave normally
+set backspace=start,eol,indent
+
+
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column -i --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -126,7 +130,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 map <leader>s :%s/\s\+$//g<CR>
-
 
 " Vimux
 function! VimuxZoomVim()
