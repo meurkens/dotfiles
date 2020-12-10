@@ -1,0 +1,27 @@
+key_bindings:
+  - { key: Return, mods: Control, action: ToggleFullscreen }
+
+colors:
+  normal:
+    black:   '#292929'
+    red:     '#ff3333'
+    green:   '#aaffaa'
+    yellow:  '#aaeecc'
+    blue:    '#aaccff'
+    magenta: '#ff1f69'
+    cyan:    '#aadddd'
+    white:   '#ffffff'
+  bright:
+    black:   '#666666' # Customized from noctilux #202020
+    red:     '#ff8888'
+    green:   '#5f5f5f'
+    yellow:  '#999999'
+    blue:    '#cccccc'
+    magenta: '#ccaaff'
+    cyan:    '#aaaaaa'
+    white:   '#fcf4dc'
+
+font:
+  size: 15
+  normal:
+    family: Source Code Pro
