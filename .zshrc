@@ -3,7 +3,7 @@ export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
 export EDITOR="vim"
 
 alias vi=vim
-alias ls="ls -G"
+alias ls="ls -G --color"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias btreset="blueutil -p 0 && sleep 1 && blueutil -p 1"
 
