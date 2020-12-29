@@ -106,7 +106,7 @@ set background=dark
 colorscheme noctu
 
 " Access system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Open splits to the bottom/right
 set splitbelow

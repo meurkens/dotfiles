@@ -31,4 +31,12 @@ Apps:
 Various:
 - Ssh keys
 
-
+Linux:
+- Brew vim with clipboard support:
+```
+sudo apt build-deps vim #save list of packages
+brew edit vim
+# change --without-x to --with-x
+brew install -s vim
+apt-get autoremove package-1 package-2 ....
+```
