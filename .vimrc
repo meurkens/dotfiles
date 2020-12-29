@@ -21,6 +21,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-rails'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 let g:vim_jsx_pretty_colorful_config = 1
@@ -47,6 +48,8 @@ let g:ale_sign_column_always = 1
 let g:ale_linters = {
   \ 'clojure': ['clj-kondo'],
   \}
+let g:ale_haskell_hlint_executable = "stack"
+" let g:ale_haskell_hlint_options = "exec -- hlint"
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
@@ -115,6 +118,13 @@ set splitright
 " Make backspace behave normally
 set backspace=start,eol,indent
 
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
