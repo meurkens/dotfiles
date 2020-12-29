@@ -1,5 +1,5 @@
 key_bindings:
-  - { key: Return, mods: Control, action: ToggleFullscreen }
+  - { key: F, mods: Control|Command, action: ToggleFullscreen }
 
 colors:
   normal:
@@ -10,9 +10,9 @@ colors:
     blue:    '#aaccff'
     magenta: '#ff1f69'
     cyan:    '#aadddd'
-    white:   '#ffffff'
+    white:   '#f8f8f8'
   bright:
-    black:   '#666666' # Customized from noctilux #202020
+    black:   '#707070' # Customized from noctilux #202020
     red:     '#ff8888'
     green:   '#5f5f5f'
     yellow:  '#999999'
