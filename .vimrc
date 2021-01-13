@@ -11,7 +11,7 @@ Plug 'losingkeys/vim-niji'
 
 "Filetypes
 Plug 'ElmCast/elm-vim'
-Plug 'guns/vim-clojure-static'
+" Plug 'guns/vim-clojure-static'
 " Plug 'vim-scripts/VimClojure'
 Plug 'ianks/vim-tsx'
 Plug 'keith/swift.vim'
@@ -20,7 +20,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-rails'
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+" Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+
+Plug 'Olical/conjure', {'tag': 'v4.11.0'}
 call plug#end()
 
 let g:vim_jsx_pretty_colorful_config = 1
@@ -54,6 +56,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:is_posix = 1
 
 let mapleader = ","
+let maplocalleader = ";"
 map <leader>w :w<enter>
 map <leader>q :q<enter>
 map <leader>t :FZF<enter>
