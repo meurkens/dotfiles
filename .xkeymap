@@ -435,6 +435,7 @@ xkb_types "complete" {
         map[Mod5+Control]= Level3;
         map[Shift+Mod5]= Level3;
         map[Control+Shift+Mod5]= Level3;
+        map[Alt]= Level4;
         map[Mod5+Alt]= Level4;
         map[Mod5+Shift+Alt]= Level4;
         level_name[Level1]= "Base";
@@ -1225,9 +1226,9 @@ xkb_symbols "pc+us+inet(evdev)+altwin(swap_lalt_lwin)" {
         symbols[Group1]= [               w,               W ]
     };
     key <AD03> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ e, E, NoSymbol ],
-        actions[Group1]= [ NoAction(), NoAction(), SetMods(mods=Alt) ]
+        type= "FOUR_LEVEL_ALT",
+        symbols[Group1]= [ e, E, Alt_L, Alt_L ],
+        actions[Group1]= [ NoAction(), NoAction(), SetMods(mods=Alt, clearmods=Mod5), SetMods(mods=Alt, clearmods=Mod5) ]
     };
     key <AD04> {
         type= "ALPHABETIC",
