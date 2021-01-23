@@ -426,6 +426,22 @@ xkb_types "complete" {
         level_name[Level2]= "Shift";
         level_name[Level3]= "Level3";
     };
+    type "FOUR_LEVEL_ALT" {
+        modifiers= Shift+Control+Mod5+Alt;
+        map[Control]= Level1;
+        map[Shift]= Level2;
+        map[Shift+Control]= Level2;
+        map[Mod5]= Level3;
+        map[Mod5+Control]= Level3;
+        map[Shift+Mod5]= Level3;
+        map[Control+Shift+Mod5]= Level3;
+        map[Mod5+Alt]= Level4;
+        map[Mod5+Shift+Alt]= Level4;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Shift";
+        level_name[Level3]= "Level3";
+        level_name[Level4]= "Alt";
+    };
     type "EIGHT_LEVEL" {
         modifiers= Shift+LevelThree+LevelFive;
         map[Shift]= Level2;
@@ -1279,24 +1295,24 @@ xkb_symbols "pc+us+inet(evdev)+altwin(swap_lalt_lwin)" {
         symbols[Group1]= [               g,               G ]
     };
     key <AC06> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ h, H, Left ],
-        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<LEFT>, clearmods=Mod5) ]
+        type= "FOUR_LEVEL_ALT",
+        symbols[Group1]= [ h, H, Left, Left ],
+        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<LEFT>, clearmods=Mod5), RedirectKey(keycode=<HOME>, clearmods=Mod5+Alt) ]
     };
     key <AC07> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ j, J, Down ],
-        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<DOWN>, clearmods=Mod5) ]
+        type= "FOUR_LEVEL_ALT",
+        symbols[Group1]= [ j, J, Down, Down ],
+        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<DOWN>, clearmods=Mod5), RedirectKey(keycode=<PGDN>, clearmods=Mod5+Alt) ]
     };
     key <AC08> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ k, K, Up ],
-        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<UP>, clearmods=Mod5) ]
+        type= "FOUR_LEVEL_ALT",
+        symbols[Group1]= [ k, K, Up, Up ],
+        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<UP>, clearmods=Mod5), RedirectKey(keycode=<PGUP>, clearmods=Mod5+Alt) ]
     };
     key <AC09> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ l, L, Right ],
-        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<RGHT>, clearmods=Mod5) ]
+        type= "FOUR_LEVEL_ALT",
+        symbols[Group1]= [ l, L, Right, Right ],
+        actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<RGHT>, clearmods=Mod5), RedirectKey(keycode=<END>, clearmods=Mod5+Alt) ]
     };
     key <AC10> {
         type= "THREE_LEVEL",
