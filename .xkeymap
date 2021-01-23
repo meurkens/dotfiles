@@ -1359,8 +1359,16 @@ xkb_symbols "pc+us+inet(evdev)+altwin(swap_lalt_lwin)" {
         type= "ALPHABETIC",
         symbols[Group1]= [               m,               M ]
     };
-    key <AB08> {         [           comma,            less ] };
-    key <AB09> {         [          period,         greater ] };
+    key <AB08> {
+      type= "THREE_LEVEL",
+      symbols[Group1]= [ comma, less, XF86MonBrightnessDown ],
+      actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<I232>, clearMods=mod5) ]
+    };
+    key <AB09> {
+      type= "THREE_LEVEL",
+      symbols[Group1]= [ period, greater, XF86MonBrightnessUp ],
+      actions[Group1]= [ NoAction(), NoAction(), RedirectKey(keycode=<I233>, clearMods=mod5) ]
+    };
     key <AB10> {         [           slash,        question ] };
     key <RTSH> {         [         Shift_R ] };
     key <KPMU> {
