@@ -1228,7 +1228,7 @@ xkb_symbols "pc+us+inet(evdev)+altwin(swap_lalt_lwin)" {
     key <AD03> {
         type= "FOUR_LEVEL_ALT",
         symbols[Group1]= [ e, E, Alt_L, Alt_L ],
-        actions[Group1]= [ NoAction(), NoAction(), SetMods(mods=Alt, clearmods=Mod5), SetMods(mods=Alt, clearmods=Mod5) ]
+        actions[Group1]= [ NoAction(), NoAction(), SetMods(mods=Alt), SetMods(mods=Alt) ]
     };
     key <AD04> {
         type= "ALPHABETIC",
@@ -1619,9 +1619,9 @@ xkb_symbols "pc+us+inet(evdev)+altwin(swap_lalt_lwin)" {
     modifier_map Shift { <LFSH> };
     modifier_map Shift { <RTSH> };
     modifier_map Mod4 { <LALT> };
-    modifier_map Lock { <CAPS> };
+    # modifier_map Lock { <CAPS> };
     modifier_map Mod2 { <NMLK> };
-    modifier_map Mod5 { Escape };
+    modifier_map Mod5 { <CAPS> };
     modifier_map Control { <RCTL> };
     modifier_map Mod1 { <RALT> };
     modifier_map Mod1 { <LWIN> };

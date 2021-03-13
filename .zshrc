@@ -2,6 +2,7 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
 export EDITOR="vim"
 
+alias vim=nvim
 alias vi=vim
 alias ls="ls -G --color"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
