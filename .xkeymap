@@ -415,7 +415,7 @@ xkb_types "complete" {
     };
     type "THREE_LEVEL" {
         modifiers= Shift+Control+Mod5;
-        map[Control]= Level1;
+        // map[Control]= Level1;
         map[Shift]= Level2;
         map[Shift+Control]= Level2;
         map[Mod5]= Level3;
