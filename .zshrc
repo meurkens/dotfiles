@@ -20,6 +20,8 @@ alias gp="git push origin HEAD"
 alias gr='git rev-parse --show-toplevel | xargs cd'
 alias gs="git status -sb"
 
+alias pbcopy="xclip -selection clipboard"
+
 # Vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
