@@ -1,0 +1,22 @@
+- homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle -f ~/.dotfiles/Brewfile
+
+- 1password
+  https://support.1password.com/getting-started-linux/
+
+- source code pro
+  https://www.rogerpence.com/posts/install-source-code-pro-font-on-ubuntu
+
+- alacrity
+  https://github.com/alacritty/alacritty/blob/master/INSTALL.md#debianubuntu
+
+- shell
+  chsh /usr/local/bin/zsh
+
+- ssh key
+
+- emacs 27
+  sudo add-apt-repository ppa:kelleyk/emacs
+  sudo vim /etc/apt/sources.list.d/kelleyk-ubuntu...
+  change 'groovy' (21.10) to 'focal' (20.04)
