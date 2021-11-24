@@ -93,6 +93,14 @@
                         "description": "Hold Tab to VI-mode",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
@@ -517,7 +525,7 @@
                         "product_id": 620,
                         "vendor_id": 1452
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 },
