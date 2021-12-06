@@ -219,16 +219,44 @@
                         ]
                     },
                     {
-                        "description": "music keys",
-                        "manipulators": [
+                      "description": "Backspace to delete",
+                      "manipulators": [
+                        {
+                          "conditions": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "vi_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
+                              "name": "vi_mode",
+                              "type": "variable_if",
+                              "value": 1
+                            }
+                          ],
+                          "from": {
+                            "key_code": "delete_or_backspace",
+                            "modifiers": {
+                              "optional": [
+                                "any"
+                              ]
+                            }
+                          },
+                          "to": [
+                            {
+                              "key_code": "delete_forward"
+                            }
+                          ],
+                          "type": "basic"
+                        }
+                      ]
+                    },
+                    {
+                      "description": "music keys",
+                      "manipulators": [
+                        {
+                          "conditions": [
+                            {
+                              "name": "vi_mode",
+                              "type": "variable_if",
+                              "value": 1
+                            }
+                          ],
                                 "from": {
                                     "key_code": "backslash"
                                 },

@@ -1,5 +1,4 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(rbenv init -)"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
 export EDITOR="vim"
 export LANG='en_US.UTF-8'
