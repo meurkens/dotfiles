@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 echo "Configuring dotfiles repo..."
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
@@ -19,10 +21,10 @@ git config --global user.name "Stijn Meurkens"
 git config --global user.email meurkens@gmail.com
 
 echo "Configuring zsh as default shell..."
-if ! grep -q "/usr/local/bin/zsh" /etc/shells; then
-  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+if ! grep -q "/opt/homebrew/bin/zsh" /etc/shells; then
+  echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells
 fi
-chsh -s /usr/local/bin/zsh
+chsh -s /opt/homebrew/bin/zsh
 
 echo "Creating Code directory..."
 mkdir ~/Code

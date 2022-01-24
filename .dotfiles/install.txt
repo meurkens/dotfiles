@@ -1,34 +1,26 @@
 System preferences:
 - Hostname
-- Display scale
 - Night shift
 - Password after 5s
 - Remove 'show recent apps form Dock'
 - Turn on firewall
 - Turn on FileVault
 - Trackpad settings
-- Map capslock to escape
 - Do not disturb when display is sleeping
-- Fast key repeat
-- Right mouse button
 - Remove items from dock
-- Hot corner
 - Automatic updates
 - Finder sidebar items
-- Keyboard Shortcuts > App Shortcuts > Google Chrome > Cmd-Option-H > 'Hide Others'
-- Keyboard Shortcuts for persona's in Chrome: Cmd-Shift-P / Cmd-Shift-O
 - Set wallpaper R118 G131 B150
 - Connect bluetooth keyboard
-- Bluetooth in menu bar
+- Shortcut to hide emacs: F13
 
 Apps:
 - 1Password login
 - Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Pocket
 - Colorscheme terminal
-- Tunnelblick config
 - Fleetsmith
+- Start Karabiner
+- Choosy; default Safari, best running browser, start at login
 
 Various:
 - Ssh keys
-
-

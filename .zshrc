@@ -1,6 +1,7 @@
-eval "$(rbenv init -)"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
 export EDITOR="vim"
+export LANG='en_US.UTF-8'
 
 alias vi=vim
 alias ls="ls -G"
@@ -38,8 +39,8 @@ ${PWD/#$HOME/~}
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. /opt/homebrew/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
 
 export ANDROID_SDK=/Users/meurkens/Library/Android/sdk
 export PATH=/Users/meurkens/Library/Android/sdk/platform-tools:$PATH
