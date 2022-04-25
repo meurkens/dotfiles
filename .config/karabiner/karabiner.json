@@ -163,7 +163,7 @@
                         ]
                     },
                     {
-                        "description": "d to Command",
+                        "description": "d to Option",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -183,7 +183,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_command"
+                                        "key_code": "left_option"
                                     }
                                 ],
                                 "type": "basic"
@@ -191,7 +191,7 @@
                         ]
                     },
                     {
-                        "description": "e to Option",
+                        "description": "e to Command",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -211,7 +211,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_option"
+                                        "key_code": "left_command"
                                     }
                                 ],
                                 "type": "basic"
