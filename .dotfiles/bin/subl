@@ -19,15 +19,32 @@ ensure_credentials() {
   fi
 }
 
+has_space() {
+  (echo $1 | grep -q " ") && return 0 || return 1
+}
+
+quoted() {
+  (has_space "$1") && echo "\"$1\"" || echo $1
+}
+
+build_args() {
+  NEW_ARG=""
+  for i in "$@"; do
+    NEW_ARG="$NEW_ARG $(quoted "$i")"
+  done
+  echo $NEW_ARG
+}
+
 main() {
   check_subliminal
   ensure_credentials
 
+  ARGS=$(build_args "$@")
   CREDENTIALS=$(cat ~/.subl)
   COMMAND="subliminal --opensubtitles $CREDENTIALS $ARGS"
+
   echo "$COMMAND\n"
   eval $COMMAND
 }
 
-ARGS="$@"
-main
+main "$@"
