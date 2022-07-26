@@ -1,3 +1,8 @@
+;;; .emacs --- Person config
+;;; Commentary:
+
+;;; Code:
+
 ;; remove visual clutter
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -29,9 +34,15 @@
       indent-tabs-mode nil)
 
 ;; trailing whitespace
-(setq-default show-trailing-whitespace t)
+
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'left)
+
+(setq-default show-trailing-whitespace t)
+(add-hook 'cider-repl-mode-hook
+	  (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'shell-mode-hook
+	  (lambda () (setq show-trailing-whitespace nil)))
 
 ;; turn of audio
 (setq ring-bell-function 'ignore)
@@ -52,14 +63,23 @@
       company-minimum-prefix-length 1
       lsp-lens-enable t
       lsp-signature-auto-activate nil
-      ; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
-      ; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+      ;; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+      ;; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
       )
 
 (windmove-default-keybindings)
 
 (setq mac-option-modifier 'super)
 (setq mac-pass-command-to-system nil)
+(setq split-width-threshold 0)
+
+(global-set-key (kbd "C-c e c")
+		(lambda () (interactive)
+		  (find-file "~/.emacs")))
+
+(global-set-key (kbd "C-c e s")
+		(lambda () (interactive)
+		  (find-file "~/Dropbox/Current/emacs cheatsheet.md")))
 
 ;; PACKAGES
 ;; ========
@@ -74,6 +94,9 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Searching
+;; =========
+
 (use-package swiper
   :ensure t)
 
@@ -86,33 +109,19 @@
   (ivy-mode)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  (setq ivy-re-builders-alist
-	'((t . ivy--regex-fuzzy)))
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "<f6>") 'ivy-resume)
   (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file))
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (setq ivy-re-builders-alist
+	'((t . ivy--regex-fuzzy))))
 
 (use-package flx
   :ensure t)
 
 (use-package ivy-hydra
   :ensure t)
-
-;; evil mode
-;; (use-package evil
-;;   :ensure t
-;;   :init
-;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-;;   (setq evil-want-keybinding nil)
-;;   :config
-;;   (evil-mode 1))
-;;
-;; (use-package evil-collection
-;;   :after evil
-;;   :ensure t
-;;   :config (evil-collection-init))
 
 (use-package doom-themes
   :ensure t
@@ -164,7 +173,9 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	 ;;         (XXX-mode . lsp)
-	 ;;(rustic-mode . lsp)
+	 ;; (rustic-mode . lsp)
+	 (web-mode . lsp)
+
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
@@ -179,23 +190,27 @@
   (lsp-rust-analyzer-inlay-hints-mode t)
   (lsp-rust-analyzer-proc-macro-enable t)
   (lsp-rust-analyzer-server-display-inlay-hints t)
+  ;; (lsp-disabled-clients '(ts-ls))
   :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (add-hook 'lsp-mode-hook #'yas-minor-mode-on))
+  ;;(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  (add-hook 'lsp-mode-hook #'yas-minor-mode-on)
+  (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
+  (add-hook 'hack-local-variables-hook
+          (lambda () (when (derived-mode-p 'web-mode) (lsp)))))
 
-(use-package lsp-ui
-   :ensure t
-   :commands lsp-ui-mode)
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode)
 
-(use-package lsp-ivy
-  :ensure t
-  :commands lsp-ivy-workspace-symbol)
+;; (use-package lsp-ivy
+;;   :ensure t
+;;   :commands lsp-ivy-workspace-symbol)
 
-(use-package lsp-treemacs
-  :ensure t
-  :commands lsp-treemacs-errors-list)
+;; (use-package lsp-treemacs
+;;   :ensure t
+;;   :commands lsp-treemacs-errors-list)
 
-(add-hook 'clojure-mode-hook 'lsp)
+;;(add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
 (add-hook 'clojurec-mode-hook 'lsp)
 
@@ -211,12 +226,54 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 ;; (use-package rustic
 ;;   :ensure t
 ;;   :custom
 ;;   (rustic-lsp-client 'lsp-mode))
 
+(use-package magit
+  :ensure t)
+
+(use-package rg
+  :ensure t)
+
+;; Javascript
+
+(use-package prettier-js
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook #'prettier-js-mode))
+
+(use-package add-node-modules-path
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook #'add-node-modules-path))
+
+(use-package web-mode
+  :ensure t
+  :mode ("\\.tsx?\\'" "\\.jsx?\\'")
+  ;;  :hook (add-node-modules-path prettier-js-mode)
+  :init
+  (add-hook 'web-mode-hook #'add-node-modules-path)
+  (add-hook 'web-mode-hook #'prettier-js-mode)
+  :config
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (setq web-mode-code-indent-offset 2
+	web-mode-markup-indent-offset 2
+	web-mode-css-indent-offset 2))
+
+;; Start server if not already running
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
+;; Enable MacOS fullscreen in title bar
+(toggle-frame-fullscreen)
+(toggle-frame-fullscreen)
+
+(provide '.emacs)
+;;; .emacs ends here
