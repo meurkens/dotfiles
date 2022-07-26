@@ -196,7 +196,7 @@
   (add-hook 'lsp-mode-hook #'yas-minor-mode-on)
   (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
   (add-hook 'hack-local-variables-hook
-          (lambda () (when (derived-mode-p 'web-mode) (lsp)))))
+          (lambda () (when (derived-mode-p 'prog-mode) (lsp)))))
 
 ;; (use-package lsp-ui
 ;;   :ensure t
