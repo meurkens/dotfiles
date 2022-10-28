@@ -90,51 +90,6 @@
                         ]
                     },
                     {
-                        "description": "Hold Tab to VI-mode",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "vi_mode",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "vi_mode",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "tab"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "f to Shift",
                         "manipulators": [
                             {
@@ -219,95 +174,95 @@
                         ]
                     },
                     {
-                      "description": "Display brightness",
-                      "manipulators": [
-                        {
-                          "conditions": [
+                        "description": "Display brightness",
+                        "manipulators": [
                             {
-                              "name": "vi_mode",
-                              "type": "variable_if",
-                              "value": 1
-                            }
-                          ],
-                          "from": {
-                            "key_code": "comma",
-                            "modifiers": {
-                              "optional": [
-                                "any"
-                              ]
-                            }
-                          },
-                          "to": [
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "apple_display_brightness_decrement"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
-                              "key_code": "apple_display_brightness_decrement"
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "apple_display_brightness_increment"
+                                    }
+                                ],
+                                "type": "basic"
                             }
-                          ],
-                          "type": "basic"
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "name": "vi_mode",
-                              "type": "variable_if",
-                              "value": 1
-                            }
-                          ],
-                          "from": {
-                            "key_code": "period",
-                            "modifiers": {
-                              "optional": [
-                                "any"
-                              ]
-                            }
-                          },
-                          "to": [
-                            {
-                              "key_code": "apple_display_brightness_increment"
-                            }
-                          ],
-                          "type": "basic"
-                        }
-                      ]
+                        ]
                     },
                     {
-                      "description": "Backspace to delete",
-                      "manipulators": [
-                        {
-                          "conditions": [
+                        "description": "Backspace to delete",
+                        "manipulators": [
                             {
-                              "name": "vi_mode",
-                              "type": "variable_if",
-                              "value": 1
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward"
+                                    }
+                                ],
+                                "type": "basic"
                             }
-                          ],
-                          "from": {
-                            "key_code": "delete_or_backspace",
-                            "modifiers": {
-                              "optional": [
-                                "any"
-                              ]
-                            }
-                          },
-                          "to": [
-                            {
-                              "key_code": "delete_forward"
-                            }
-                          ],
-                          "type": "basic"
-                        }
-                      ]
+                        ]
                     },
                     {
-                      "description": "music keys",
-                      "manipulators": [
-                        {
-                          "conditions": [
+                        "description": "music keys",
+                        "manipulators": [
                             {
-                              "name": "vi_mode",
-                              "type": "variable_if",
-                              "value": 1
-                            }
-                          ],
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "backslash"
                                 },
@@ -619,6 +574,45 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 641,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 41619,
+                        "vendor_id": 1241
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 782,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": []
                 }
             ],
