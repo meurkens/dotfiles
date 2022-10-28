@@ -50,5 +50,9 @@ ln -s "$HOME/.dotfiles/install.txt" ~/Desktop
 echo "Linking inbox on Desktop..."
 ln -s ~/Dropbox/Inbox ~/Desktop/
 
+echo "Install programming languages..."
+cd
+cat .tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add  {}
+
 echo "Installation complete!"
 echo "Please reboot computer before continuing..."
