@@ -12,7 +12,7 @@
 ;; font
 (set-face-attribute 'default nil
 		    :font "Overpass Mono"
-		    :height 160)
+		    :height 140)
 
 ;; line numbers
 (global-display-line-numbers-mode)
@@ -63,7 +63,7 @@
       company-minimum-prefix-length 1
       lsp-lens-enable t
       lsp-signature-auto-activate nil
-      ;; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+      lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
       ;; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
       )
 
@@ -115,7 +115,8 @@
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (setq ivy-re-builders-alist
-	'((t . ivy--regex-fuzzy))))
+	'((swiper . ivy--regex-plus)
+	  (t . ivy--regex-fuzzy))))
 
 (use-package flx
   :ensure t)
@@ -169,15 +170,15 @@
 (use-package lsp-mode
   :ensure t
   :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	 ;;         (XXX-mode . lsp)
-	 ;; (rustic-mode . lsp)
-	 (web-mode . lsp)
+  (setq lsp-keymap-prefix "C-l")
+  :hook
+  (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+   ;;         (XXX-mode . lsp)
+   ;; (rustic-mode . lsp)
+   (web-mode . lsp)
 
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
+   ;; if you want which-key integration
+   (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :custom
   (lsp-eldoc-render-all t)
@@ -190,13 +191,14 @@
   (lsp-rust-analyzer-inlay-hints-mode t)
   (lsp-rust-analyzer-proc-macro-enable t)
   (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-headerline-breadcrumb-enable nil)
   ;; (lsp-disabled-clients '(ts-ls))
   :config
-  ;;(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  ;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook #'yas-minor-mode-on)
-  (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
+  ;; (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
   (add-hook 'hack-local-variables-hook
-          (lambda () (when (derived-mode-p 'prog-mode) (lsp)))))
+            (lambda () (when (derived-mode-p 'web-mode) (lsp)))))
 
 ;; (use-package lsp-ui
 ;;   :ensure t
@@ -265,6 +267,22 @@
   (setq web-mode-code-indent-offset 2
 	web-mode-markup-indent-offset 2
 	web-mode-css-indent-offset 2))
+
+;; python
+
+(use-package poetry
+  :ensure t)
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+			 (message "hihihi")
+			 (flycheck-disable-checker 'lsp)
+                          (lsp))))  ; or lsp-deferred
+
+(use-package python-black
+  :ensure t)
 
 ;; Start server if not already running
 (require 'server)
