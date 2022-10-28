@@ -24,22 +24,15 @@ has_space() {
 }
 
 quoted() {
-  (has_space "$1") && echo "\"$1\"" || echo $1
-}
-
-build_args() {
-  NEW_ARG=""
-  for i in "$@"; do
-    NEW_ARG="$NEW_ARG $(quoted "$i")"
-  done
-  echo $NEW_ARG
+  QUOTED=$($(has_space "$1") && echo "\"$1\"" || echo "$1")
+  echo "$QUOTED \c"
 }
 
 main() {
   check_subliminal
   ensure_credentials
 
-  ARGS=$(build_args "$@")
+  ARGS=$(for arg in "$@"; do quoted "$arg"; done)
   CREDENTIALS=$(cat ~/.subl)
   COMMAND="subliminal --opensubtitles $CREDENTIALS $ARGS"
 
