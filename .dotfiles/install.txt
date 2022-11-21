@@ -5,8 +5,8 @@ System preferences:
 - Remove 'show recent apps form Dock'
 - Turn on firewall
 - Turn on FileVault
+- Accept all accessories
 - Trackpad settings
-- Do not disturb when display is sleeping
 - Remove items from dock
 - Automatic updates
 - Finder sidebar items
@@ -18,7 +18,7 @@ Apps:
 - 1Password login
 - Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Pocket
 - Colorscheme terminal
-- Fleetsmith
+- Kanji
 - Start Karabiner
 - Choosy; default Safari, best running browser, start at login
 

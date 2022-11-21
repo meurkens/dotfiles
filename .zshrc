@@ -39,7 +39,7 @@ ${PWD/#$HOME/~}
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
 
-. /opt/homebrew/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 . /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
 
 export ANDROID_SDK=/Users/meurkens/Library/Android/sdk

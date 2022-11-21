@@ -12,7 +12,7 @@ echo "Installing xcode..."
 read -p "Please install and run XCode first, Press [Enter] to continue"
 
 echo "Installing homebrew..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew bundle
 brew cleanup
 

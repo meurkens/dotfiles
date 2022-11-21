@@ -278,13 +278,13 @@
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
 			 (message "hihihi")
-			 (flycheck-disable-checker 'lsp)
-                          (lsp))))  ; or lsp-deferred
+      			 (flycheck-disable-checker 'lsp)
+                         (lsp))))  ; or lsp-deferred
 
 (use-package python-black
   :ensure t)
 
-;; Start server if not already running
+;; Start server if not already runningo
 (require 'server)
 (unless (server-running-p)
   (server-start))
