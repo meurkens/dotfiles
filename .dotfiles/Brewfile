@@ -4,8 +4,6 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-drivers'
 tap 'homebrew/services'
-tap 'railwaycat/emacsmacport'
-tap 'yt-dlp/taps'
 
 cask 'dropbox'
 
@@ -19,14 +17,14 @@ brew 'ripgrep'
 brew 'subliminal'
 brew 'tmux'
 brew 'wget'
-# brew 'yt-dlp/taps/yt-dlp'
+brew 'yt-dlp'
 brew 'zsh'
 
 cask '1password'
-# cask 'adoptopenjdk'
+cask 'adoptopenjdk'
 cask 'appcleaner'
-# cask 'choosy'
-cask 'emacs-mac'
+cask 'choosy'
+cask 'emacs'
 cask 'figma'
 cask 'firefox'
 cask 'google-chrome'
@@ -47,3 +45,8 @@ cask 'whatsapp'
 brew 'svn' # Needed for fonts
 cask 'font-source-code-pro'
 cask 'font-overpass'
+
+mas "Ghostery – Privacy Ad Blocker", id: 1436953057
+mas "Pixelmator", id: 407963104
+mas "Save to Pocket", id: 1477385213
+mas "Xcode", id: 497799835
