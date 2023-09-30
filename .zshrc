@@ -1,5 +1,6 @@
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$PATH"
+
 export EDITOR="vim"
 export LANG='en_US.UTF-8'
 
@@ -41,6 +42,3 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 . /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
-
-export ANDROID_SDK=/Users/meurkens/Library/Android/sdk
-export PATH=/Users/meurkens/Library/Android/sdk/platform-tools:$PATH
