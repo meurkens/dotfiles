@@ -9,6 +9,7 @@ cask 'dropbox'
 
 brew 'asdf'
 brew 'fzf'
+brew 'ghcup'
 brew 'git'
 brew 'gpg'
 brew 'macvim'
@@ -38,11 +39,12 @@ cask 'sketch'
 cask 'slack'
 cask 'spotify'
 cask 'transmission'
+cask 'vial'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'whatsapp'
 
-brew 'svn' # Needed for fonts
+brew 'subversion' # Needed for fonts
 cask 'font-source-code-pro'
 cask 'font-overpass'
 
