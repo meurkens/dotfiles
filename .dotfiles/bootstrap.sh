@@ -8,12 +8,10 @@ dotfiles config --local status.showUntrackedFiles no
 dotfiles remote remove origin
 dotfiles remote add origin git@github.com:meurkens/dotfiles
 
-echo "Installing xcode..."
-read -p "Please install and run XCode first, Press [Enter] to continue"
-
 echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle
+beval "$(/opt/homebrew/bin/brew shellenv)
+"rew bundle
 brew cleanup
 
 echo "Configuring git..."
@@ -32,6 +30,10 @@ mkdir ~/Code
 echo "Configuring macOS settings..."
 sh ~/.macos
 
+echo "Install programming languages..."
+cd
+cat .tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add  {}
+
 echo "Configuring vim..."
 vim +PlugInstall +qa!
 
@@ -49,10 +51,6 @@ ln -s "$HOME/.dotfiles/install.txt" ~/Desktop
 
 echo "Linking inbox on Desktop..."
 ln -s ~/Dropbox/Inbox ~/Desktop/
-
-echo "Install programming languages..."
-cd
-cat .tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add  {}
 
 echo "Installation complete!"
 echo "Please reboot computer before continuing..."
