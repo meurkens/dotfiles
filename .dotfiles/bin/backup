@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# brew install rclone
+# rclone config in 1Password
+
+echo "rclone sync dropbox:/ backblaze:stijnmeurkens-backup/Dropbox"
+rclone sync dropbox:/ backblaze:stijnmeurkens-backup/Dropbox
+
+echo "rclone sync -v googlephotos:media/by-month backblaze:stijnmeurkens-backup/Google\ Photos/"
+rclone sync -v --ignore-existing googlephotos:media/by-month backblaze:stijnmeurkens-backup/Google\ Photos/
