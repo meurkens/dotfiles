@@ -1,4 +1,4 @@
-export PATH="$HOME/.dotfiles/bin:./bin:./node_modules/.bin:/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:./bin:./node_modules/.bin:/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$PATH"
 
 export EDITOR="vim"

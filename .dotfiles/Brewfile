@@ -30,7 +30,6 @@ cask 'karabiner-elements'
 cask 'keepingyouawake'
 cask 'mullvadvpn'
 cask 'notion'
-cask 'simplenote'
 cask 'sketch'
 cask 'slack'
 cask 'spotify'
@@ -49,3 +48,4 @@ mas "Ghostery – Privacy Ad Blocker", id: 1436953057
 mas "Pixelmator", id: 407963104
 mas "Save to Pocket", id: 1477385213
 mas "Xcode", id: 497799835
+mas "Simplenote", id: 692867256

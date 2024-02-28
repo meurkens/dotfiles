@@ -1,5 +1,6 @@
 .ssh/*
 .dotfiles.git
 .vim/plugged
+.vim/.netrwhist
 
 .DS_Store

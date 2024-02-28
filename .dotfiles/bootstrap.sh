@@ -43,8 +43,8 @@ echo "Linking iTunes music..."
 rm -rf ~/Music/iTunes
 ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 
-echo "Linking GPG dir..."
-ln -s ~/Dropbox/Appdata/gnupg.symlink ~/.gnupg
+echo "Linking private dotfiles..."
+find ~/Dropbox/Appdata/dotfiles -name "*.symlink" -exec sh -c 'ln -s {} ./."$(basename {} .symlink)"' \;
 
 echo "Linking further install instructions on Desktop..."
 ln -s "$HOME/.dotfiles/install.txt" ~/Desktop

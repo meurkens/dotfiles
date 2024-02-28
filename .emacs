@@ -8,7 +8,6 @@
 ;; - Org
 ;; - Magit dotfiles
 ;; - Ruby
-;; - early-init.el
 ;; - Modularize
 
 
@@ -47,7 +46,6 @@
                     :font "Overpass Mono"
                     :height 140)
 
-;; Line numbers
 (global-display-line-numbers-mode)
 
 ;; Turn off audio
@@ -84,6 +82,11 @@
 (load custom-file t)
 
 
+;; BINDINGS
+;; ========
+
+(keymap-global-set "M-F" 'toggle-frame-fullscreen)
+
 ;; EDITING
 ;; =======
 
@@ -109,33 +112,51 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :init
-  (projectile-mode t)
+  :init (projectile-mode t)
   :bind (:map projectile-mode-map
               ("C-c p" . projectile-command-map)))
 
 (use-package which-key
   :ensure t
   :diminish which-key-mode
-  :config
-  (which-key-mode))
+  :config (which-key-mode))
 
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode)
-  :custom
-  (flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  :custom (flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package magit
   :ensure t)
 
 (use-package lsp-mode
   :ensure t
-  :hook (lsp-mode     . lsp-enable-which-key-integration)
+  :hook (lsp-mode . lsp-enable-which-key-integration)
   :custom
   (lsp-keymap-prefix "C-c l")
   (lsp-headerline-breadcrumb-enable nil)
   :commands lsp)
+
+(use-package consult
+  :ensure t
+  :bind (("C-x b" . consult-buffer)
+         ("M-s l" . consult-line)
+         ("M-s r" . consult-ripgrep)))
+
+(use-package vertico
+  :ensure t
+  :init (vertico-mode))
+
+(use-package savehist
+  :ensure t
+  :init (savehist-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
 
 ;; LANGUAGES
@@ -147,16 +168,11 @@
 (use-package haskell-mode
   :ensure t
   :hook ((haskell-mode . lsp)
-         (haskell-mode . install-format-before-save)))
+         (haskell-mode . install-format-before-save)
+         (haskell-mode . interactive-haskell-mode)))
 
 (use-package lsp-haskell
   :ensure t
   :custom
   (lsp-haskell-formatting-provider "fourmolu")
-  (haskell-indentation-layout-offset 4)
-  (haskell-indentation-starter-offset 4)
-  (haskell-indentation-left-offset 4)
-  (haskell-indentation-ifte-offset 4)
-  (haskell-indentation-where-pre-offs 4)
-  (haskell-indentation-where-post-offset 4)
   :after (lsp-mode))
