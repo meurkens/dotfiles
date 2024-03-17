@@ -1,13 +1,13 @@
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
-
 vim.o.clipboard = "unnamedplus"
-
 vim.g.mapleader = ","
 
 vim.keymap.set('n', '<leader>w', ":w<CR>")
 vim.keymap.set('n', '<leader>q', ":q<CR>")
+
+vim.wo.number = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -22,15 +22,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-plugins = {
+local plugins = {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.6',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>t', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    end
   },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function () 
+    config = function()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
@@ -38,7 +46,7 @@ plugins = {
         sync_install = false,
         auto_install = true,
         highlight = { enable = true },
-        indent = { enable = true },  
+        indent = { enable = true },
       })
     end
   },
@@ -49,16 +57,79 @@ plugins = {
       opleader = { line = "<leader>d" }
     },
     lazy = false,
+  },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup {
+        ensure_installed = { "lua_ls" },
+      }
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({})
+
+      local opts = {}
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+      vim.keymap.set('n', '<leader>F', function()
+        vim.lsp.buf.format { async = true }
+      end, opts)
+    end
+  },
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup({
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+        formatters_by_ft = {
+          javascript = { { "prettierd", "prettier" } },
+          html = { { "prettierd", "prettier" } }
+        }
+      })
+    end
+  },
+  {
+    "echasnovski/mini.base16",
+    config = function()
+      require("mini.base16").setup({
+        palette = require('mini.base16').mini_palette('#000000', '#ffffff', 75),
+        use_cterm = {
+          base00 = 0,  -- background
+          base01 = 0,  -- linenumber background
+          base02 = 8,  -- background statusline
+          base03 = 10, -- linenumbers, comments
+          base04 = 12, -- statusline
+          base05 = 15, -- variable names, equality signs
+          base06 = 5,  -- unknown?
+          base07 = 5,  -- unknown?
+          base08 = 4,  -- variable names
+          base09 = 13, -- booleans, integer literals
+          base0A = 2,  -- html
+          base0B = 12, -- string literals
+          base0C = 4,  -- require, curly brackets
+          base0D = 13, -- function calls
+          base0E = 3,  -- keywords
+          base0F = 7,  -- commas, brackets
+        },
+      })
+    end
   }
 }
-opts = {}
+local opts = {}
 
 require("lazy").setup(plugins, opts)
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>t', builtin.find_files, {})
-vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-vim.cmd('source ~/.config/nvim/noctu.vim')
+-- vim.cmd('source ~/.config/nvim/noctu.vim')

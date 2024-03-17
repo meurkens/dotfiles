@@ -3,6 +3,7 @@ export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$PATH"
 
 export EDITOR="vim"
 export LANG='en_US.UTF-8'
+export TERM=screen-256color
 
 alias vi=vim
 alias ls="ls -G"
