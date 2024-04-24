@@ -4,8 +4,9 @@ vim.o.expandtab = true
 vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = ","
 
-vim.keymap.set('n', '<leader>w', ":w<CR>")
-vim.keymap.set('n', '<leader>q', ":q<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>/", ":nohl<CR>")
 
 vim.wo.number = true
 
@@ -24,16 +25,16 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.6",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>t', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    end
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>t", builtin.find_files, {})
+      vim.keymap.set("n", "<leader>r", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -48,13 +49,13 @@ local plugins = {
         highlight = { enable = true },
         indent = { enable = true },
       })
-    end
+    end,
   },
   {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     opts = {
       toggler = { line = "<leader>d" },
-      opleader = { line = "<leader>d" }
+      opleader = { line = "<leader>d" },
     },
     lazy = false,
   },
@@ -62,29 +63,30 @@ local plugins = {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup {
+      require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
-      }
-    end
+        automatic_installation = true,
+      })
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require('lspconfig')
+      local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
 
       local opts = {}
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-      vim.keymap.set('n', '<leader>F', function()
-        vim.lsp.buf.format { async = true }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+      vim.keymap.set("n", "<leader>F", function()
+        vim.lsp.buf.format({ async = true })
       end, opts)
-    end
+    end,
   },
   {
     "stevearc/conform.nvim",
@@ -96,16 +98,31 @@ local plugins = {
         },
         formatters_by_ft = {
           javascript = { { "prettierd", "prettier" } },
-          html = { { "prettierd", "prettier" } }
-        }
+          html = { { "prettierd", "prettier" } },
+          scss = { "stylelint" },
+          lua = { "stylua" },
+          -- css = { "prettierd", "stylelint" }
+        },
+        formatters = {
+          stylua = {
+            prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
+          },
+        },
       })
-    end
+    end,
   },
   {
     "echasnovski/mini.base16",
     config = function()
+      vim.cmd("highlight! link @markup.heading.1.markdown Label")
+      vim.cmd("highlight! link @markup.heading.2.markdown Boolean")
+      vim.cmd("highlight! link @markup.heading.3.markdown Keyword")
+      vim.cmd("highlight! link @markup.heading.4.markdown String")
+      vim.cmd("highlight! link @markup.heading.5.markdown Statusline")
+      vim.cmd("highlight! link @markup.heading.6.markdown Statusline")
+
       require("mini.base16").setup({
-        palette = require('mini.base16').mini_palette('#000000', '#ffffff', 75),
+        palette = require("mini.base16").mini_palette("#000000", "#ffffff", 75),
         use_cterm = {
           base00 = 0,  -- background
           base01 = 0,  -- linenumber background
@@ -115,21 +132,20 @@ local plugins = {
           base05 = 15, -- variable names, equality signs
           base06 = 5,  -- unknown?
           base07 = 5,  -- unknown?
-          base08 = 4,  -- variable names
+          base08 = 12, -- map keys
           base09 = 13, -- booleans, integer literals
           base0A = 2,  -- html
-          base0B = 12, -- string literals
-          base0C = 4,  -- require, curly brackets
+          base0B = 4,  -- string literals
+          base0C = 6,  -- require, curly brackets
           base0D = 13, -- function calls
           base0E = 3,  -- keywords
           base0F = 7,  -- commas, brackets
         },
       })
-    end
-  }
+    end,
+  },
 }
-local opts = {}
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins, {})
 
 -- vim.cmd('source ~/.config/nvim/noctu.vim')
