@@ -43,3 +43,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 . /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+
+source <(fzf --zsh)
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
