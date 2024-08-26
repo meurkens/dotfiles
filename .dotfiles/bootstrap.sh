@@ -10,8 +10,8 @@ dotfiles remote add origin git@github.com:meurkens/dotfiles
 
 echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-beval "$(/opt/homebrew/bin/brew shellenv)
-"rew bundle
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew bundle
 brew cleanup
 
 echo "Configuring git..."
