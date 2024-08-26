@@ -46,3 +46,5 @@ defaults write net.tunnelblick.tunnelblick doNotLaunchOnLogin -bool yes
 # TextEdit: start in plain text mode
 defaults write com.apple.TextEdit RichText -int 0
 
+# Ctrl-Command drag whole window
+defaults write -g NSWindowShouldDragOnGesture -bool true
