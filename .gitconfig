@@ -1,7 +1,9 @@
 [user]
-	email = meurkens@gmail.com
-	name = Stijn Meurkens
+  email = hi@stijnmeurkens.nl
+  name = Stijn Meurkens
 [core]
-	editor = vim
+  editor = vim
 [alias]
   untracked = ls-files --directory --others --exclude-standard
+[init]
+  defaultBranch = main
