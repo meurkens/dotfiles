@@ -9,7 +9,8 @@ alias vi=vim
 alias ls="ls -G"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias btreset="blueutil -p 0 && sleep 1 && blueutil -p 1"
-alias vim="mvim -v"
+alias vim="nvim"
+alias n="nvim"
 
 alias gb="git branch"
 alias gc="git commit"
@@ -46,3 +47,13 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/
 
 source <(fzf --zsh)
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval $(thefuck --alias fk)
+
+eval "$(zoxide init zsh)"
+alias cd=z
+
+alias ls=eza
+
+kitty-reload() {
+    kill -SIGUSR1 $(pidof kitty)
+}
