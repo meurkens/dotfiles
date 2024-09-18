@@ -48,6 +48,7 @@ cask 'whatsapp'
 brew 'subversion' # Needed for fonts
 cask 'font-source-code-pro'
 cask 'font-overpass'
+cask 'font-sauce-code-pro-nerd-font'
 
 mas "Ghostery – Privacy Ad Blocker", id: 1436953057
 mas "Pixelmator", id: 407963104
