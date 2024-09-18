@@ -5,6 +5,9 @@ vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.signcolumn = "yes"
+vim.o.updatetime = 250
+vim.o.scrolloff = 5
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -80,11 +83,15 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+    },
     config = function()
       local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       lspconfig.lua_ls.setup({})
       lspconfig.ruff_lsp.setup({})
-      lspconfig.clojure_lsp.setup({})
+      lspconfig.clojure_lsp.setup({ capabilities = capabilities })
 
       local opts = {}
       vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -192,8 +199,65 @@ local plugins = {
     "julienvincent/nvim-paredit",
     opts = {},
   },
-  { "echasnovski/mini.pairs", version = "*", opts = {} },
   { "lewis6991/gitsigns.nvim", opts = {} },
+  {
+    "hrsh7th/nvim-cmp",
+    lazy = false,
+    priority = 100,
+    dependencies = {
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+    },
+    config = function()
+      vim.opt.completeopt = { "menu", "menuone", "noselect" }
+      local cmp = require("cmp")
+      local lspkind = require("lspkind")
+      lspkind.init({})
+      cmp.setup({
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol_text",
+            maxwidth = 50,
+            ellipsis_char = "...",
+            show_labelDetails = true,
+          }),
+        },
+        completion = { completeopt = "menu,menuone,noinsert" },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-Space>"] = cmp.mapping.complete({}),
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+        }, {
+          { name = "buffer" },
+          { name = "path" },
+        }),
+      })
+    end,
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    config = function()
+      require("nvim-autopairs").setup({})
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp = require("cmp")
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
 }
 
 require("lazy").setup(plugins, {})
