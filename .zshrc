@@ -9,8 +9,6 @@ alias vi=vim
 alias ls="ls -G"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias btreset="blueutil -p 0 && sleep 1 && blueutil -p 1"
-alias vim="nvim"
-alias n="nvim"
 
 alias gb="git branch"
 alias gc="git commit"
@@ -40,19 +38,41 @@ PROMPT='
 ${PWD/#$HOME/~}
 > '
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
+if which brew > /dev/null 2>&1; then
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+if which zoxide > /dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+  alias cd=z
+fi
 
-source <(fzf --zsh)
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-eval $(thefuck --alias fk)
+if which eza > /dev/null 2>&1; then
+  alias ls=eza
+fi
 
-eval "$(zoxide init zsh)"
-alias cd=z
+if which fzf > /dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
+  source <(fzf --zsh)
+fi
 
-alias ls=eza
+if which asdf > /dev/null 2>&1; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
+
+if which nvim > /dev/null 2>&1; then
+  alias vim="nvim"
+  alias n="nvim"
+fi
+
+unpushed() {
+  for dir in */; do
+    if [ -d "$dir/.git" ]; then
+      echo "Checking $dir"
+      (cd "$dir" && git unpushed)
+    fi
+  done
+}
 
 kitty-reload() {
     kill -SIGUSR1 $(pidof kitty)
