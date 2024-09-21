@@ -73,7 +73,9 @@ unpushed() {
   for dir in */; do
     if [ -d "$dir/.git" ]; then
       echo "Checking $dir"
-      (cd "$dir" && git unpushed)
+      (cd "$dir" && (
+        git unpushed;
+        git status --porcelain | grep -q . && echo "dirty"))
     fi
   done
 }

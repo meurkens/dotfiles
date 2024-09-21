@@ -32,10 +32,11 @@ sh ~/.macos
 
 echo "Install programming languages..."
 cd
-cat .tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add  {}
+eval "$(mise activate zsh)"
+mise install
 
-echo "Configuring vim..."
-vim +PlugInstall +qa!
+echo "Install nvim plugins..."
+nvim --headless "+Lazy! sync" +qa
 
 read -p "Press [Enter] after Dropbox file structure has loaded, otherwise quit using Ctrl-C..."
 
