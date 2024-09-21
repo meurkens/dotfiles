@@ -60,6 +60,10 @@ if which asdf > /dev/null 2>&1; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
+if which mise > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
 if which nvim > /dev/null 2>&1; then
   alias vim="nvim"
   alias n="nvim"
