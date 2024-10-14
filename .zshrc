@@ -18,7 +18,7 @@ alias gf="git fetch"
 alias gl="git log --branches --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gla="gl --all"
 alias gp="git push origin HEAD"
-alias gr='git rev-parse --show-toplevel | xargs cd'
+alias gr='cd "$(git rev-parse --show-toplevel)"'
 alias gs="git status -sb"
 
 # Vi mode
