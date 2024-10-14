@@ -1,14 +1,10 @@
 tap 'homebrew/bundle'
-tap 'homebrew/core'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
 
 cask 'dropbox'
 
 brew 'eza'
 brew 'fzf'
-brew 'ghcup'
 brew 'git'
 brew 'gpg'
 brew 'macvim'
@@ -21,6 +17,7 @@ brew 'wget'
 brew 'yt-dlp'
 brew 'zoxide'
 brew 'zsh'
+brew 'zsh-autosuggestions'
 
 cask '1password'
 cask 'appcleaner'
@@ -49,8 +46,9 @@ cask 'font-source-code-pro'
 cask 'font-overpass'
 cask 'font-sauce-code-pro-nerd-font'
 
-mas "Ghostery – Privacy Ad Blocker", id: 1436953057
+mas "Ghostery Privacy Ad Blocker", id: 6504861501
 mas "Pixelmator", id: 407963104
 mas "Save to Pocket", id: 1477385213
 mas "Xcode", id: 497799835
 mas "Simplenote", id: 692867256
+mas "1Password for Safari", id: 1569813296
