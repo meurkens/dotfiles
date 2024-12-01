@@ -3,6 +3,7 @@ tap 'homebrew/services'
 
 cask 'dropbox'
 
+brew 'bat'
 brew 'eza'
 brew 'fzf'
 brew 'git'

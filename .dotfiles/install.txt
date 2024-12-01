@@ -12,7 +12,8 @@ System preferences:
 - Finder sidebar items
 - Set wallpaper R118 G131 B150
 - Connect bluetooth keyboard
-- Shortcut to hide emacs: F13
+- Install rectangle config
+- Start monitor control
 
 Apps:
 - 1Password login
