@@ -20,6 +20,16 @@ vim.keymap.set("n", "<leader>/", ":nohl<CR>")
 vim.keymap.set("n", "<leader>cc", ":e ~/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>cp", ":e ~/.config/nvim/lua/plugins.lua<CR>")
 
+vim.api.nvim_create_user_command('RenameFile', function(args)
+  local current_file = vim.fn.expand('%:p')
+  local current_dir = vim.fn.expand('%:h')
+  local new_name = args.args
+  local new_path = current_dir .. '/' .. new_name
+  vim.cmd('silent! !mv ' .. current_file .. ' ' .. new_path)
+  vim.cmd('edit ' .. new_path)
+  vim.cmd('silent! bwipeout #')
+end, { nargs = 1 })
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({

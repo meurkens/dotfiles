@@ -50,7 +50,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "ruff_lsp" },
+      ensure_installed = { "lua_ls", "ruff", "elixirls" },
       automatic_installation = true,
     },
   },
@@ -63,8 +63,9 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       lspconfig.lua_ls.setup({})
-      lspconfig.ruff_lsp.setup({})
+      lspconfig.ruff.setup({})
       lspconfig.clojure_lsp.setup({ capabilities = capabilities })
+      lspconfig.elixirls.setup({ cmd = { "elixir-ls" } })
 
       local opts = {}
       vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -89,8 +90,15 @@ return {
         css = { "prettier" },
         python = { "ruff_format" },
         clojure = { "clj-kondo" },
+        sql = { "sqlfluff" },
+        elixir = { "mix" },
       },
       formatters = {
+        sqlfluff = {
+          command = "sqlfluff",
+          args = { "fix", "-" },
+          stdin = true,
+        },
         stylua = {
           prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
         },
@@ -185,6 +193,7 @@ return {
       "hrsh7th/cmp-buffer",
     },
     config = function()
+      vim.opt.pumheight = 15 -- limit popup height
       vim.opt.completeopt = { "menu", "menuone", "noselect" }
       local cmp = require("cmp")
       local lspkind = require("lspkind")
