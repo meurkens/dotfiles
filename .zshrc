@@ -21,6 +21,8 @@ alias gp="git push origin HEAD"
 alias gr='cd "$(git rev-parse --show-toplevel)"'
 alias gs="git status -sb"
 
+dot-status
+
 # Vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -38,6 +40,7 @@ ${PWD/#$HOME/~}
 > '
 
 if which brew > /dev/null 2>&1; then
+  export HOMEBREW_NO_ENV_HINTS=true
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 

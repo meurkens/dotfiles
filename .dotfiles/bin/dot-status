@@ -1,0 +1,32 @@
+#!/bin/sh
+
+dot() {
+  /usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME $@
+}
+
+# Function to print the status of a git repository in a concise format
+git_status_summary() {
+    dot fetch --quiet &
+
+    branch=$(dot symbolic-ref --short HEAD 2>/dev/null || echo "(detached)")
+    status=$(dot status --porcelain=v1 2>/dev/null)
+    modified_count=$(echo "$status" | grep -c '^.M')
+    staged_count=$(echo "$status" | grep -c '^M.')
+    ahead_behind=$(dot rev-list --left-right --count @{upstream}...HEAD 2>/dev/null)
+    remote=$(awk '{if ($1 != "0") printf "%d", $1}' <<< "$ahead_behind")
+    local=$(awk '{if ($1 != "0") printf "%d", $2}' <<< "$ahead_behind")
+    changed_files=$(echo "$status" | awk '{print $2}' | head -5)
+
+    output=()
+    [[ $remote -gt 0 ]] && output+=("\033[32m⇣$remote\033[0m")
+    [[ $local -gt 0 ]] && output+=("\033[31m⇡$local\033[0m")
+    [[ $modified_count -gt 0 ]] && output+=("\033[0;36m$modified_count?\033[0m")
+    [[ $staged_count -gt 0 ]] && output+=("\033[0;35m$staged_count!\033[0m")
+    [[ -n "$changed_files" && $(echo "$status" | wc -l) -le 5 ]] && output+=("(files: ${changed_files//$'\n'/, })")
+
+    if (( ${#output[@]} )); then
+      echo "dot: [$branch] ${output[@]}"
+    fi
+}
+
+git_status_summary
