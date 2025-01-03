@@ -1,6 +1,7 @@
-rust latest
+rust    latest
 clojure latest
-nodejs lts
-python 3
-ruby 3
-java prefix:temurin
+nodejs  lts
+python  3
+ruby    3
+java    prefix:temurin
+elixir  latest
