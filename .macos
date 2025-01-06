@@ -38,7 +38,7 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.dock autohide -bool true
 
 # Empty dock
-defaults write com.apple.dock persistent-apps -array
+defaults delete com.apple.dock persistent-apps && killall Dock
 
 # TunnelBlick: Do not start on login
 defaults write net.tunnelblick.tunnelblick doNotLaunchOnLogin -bool yes
