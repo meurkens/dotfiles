@@ -1,0 +1,10 @@
+#/usr/bin/env sh
+
+if ! which yt-dlp > /dev/null 2>&1; then
+  echo "yt-dlp not installed"
+  exit 1
+fi
+
+command="yt-dlp -f \"bestaudio[ext=m4a]\" -x --embed-thumbnail $@"
+echo $command
+eval "$command"
