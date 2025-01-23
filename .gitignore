@@ -2,5 +2,6 @@
 .dotfiles.git
 .vim/plugged
 .vim/.netrwhist
+lazy-lock.json
 
 .DS_Store
