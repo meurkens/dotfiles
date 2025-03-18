@@ -1,6 +1,6 @@
 hs.window.animationDuration = 0
 
-function resizeToScreen(f)
+local function resizeToScreen(f)
   local window = hs.window.focusedWindow()
   local frame = window:frame()
   local max = window:screen():frame()
@@ -9,9 +9,9 @@ function resizeToScreen(f)
   window:setFrame(new_frame)
 end
 
-border = 5
+local border = 5
 
-function divideWithBorder(size, denominator, numerator)
+local function divideWithBorder(size, denominator, numerator)
   numerator = numerator or 1
   local part = (size - border) / denominator
   return math.floor(numerator * part - border)
@@ -79,25 +79,42 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "o", function()
 end)
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "i", function()
-  resizeToScreen(function(_, max)
+  resizeToScreen(function(currentFrame, max)
     local w = 1200
     local h = 900
     local frame = {
       x = (max.w - w) / 2,
-      y = (max.h - h) / 2,
+      y = math.floor((max.h - h) / 2),
       w = w,
       h = h
     }
+    if frame.y == currentFrame.y then
+      w = 1600
+      h = 1200
+      frame = {
+        x = (max.w - w) / 2,
+        y = (max.h - h) / 2,
+        w = w,
+        h = h
+      }
+    end
     return frame
   end)
 
-  local myWindow = hs.window.focusedWindow()
+  local myWindow = hs.window.frontmostWindow()
+  local myAppPath = myWindow:application():path()
   local windows = hs.window.visibleWindows()
+  local apps = {}
+
   for _, window in ipairs(windows) do
-    if window ~= myWindow then
-      window:application():hide()
+    local app = window:application()
+
+    if app:path() ~= myAppPath and not apps[app:path()] then
+      app:hide()
+      apps[app:path()] = true
     end
   end
+  myWindow:focus()
 end)
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "r", function()
