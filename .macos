@@ -48,3 +48,7 @@ defaults write com.apple.TextEdit RichText -int 0
 
 # Ctrl-Command drag whole window
 defaults write -g NSWindowShouldDragOnGesture -bool true
+
+# Save screenshots in folder
+mkdir -p ~/Screenshots
+defaults write com.apple.screencapture location -string ~/Screenshots
