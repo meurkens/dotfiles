@@ -1,0 +1,12 @@
+[settings]
+experimental = true
+
+[tools]
+clojure = "latest"
+elixir = "latest"
+erlang = "latest"
+java = "temurin"
+node = "lts"
+python = "3"
+ruby = "3"
+rust = "latest"
