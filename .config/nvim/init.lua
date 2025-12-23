@@ -20,6 +20,8 @@ vim.keymap.set("n", "<leader>/", ":nohl<CR>")
 vim.keymap.set("n", "<leader>cc", ":e ~/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>cp", ":e ~/.config/nvim/lua/plugins.lua<CR>")
 
+vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+
 vim.api.nvim_create_user_command('RenameFile', function(args)
   local current_file = vim.fn.expand('%:p')
   local current_dir = vim.fn.expand('%:h')
@@ -42,5 +44,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
 
 require("lazy").setup("plugins", {})
