@@ -1,7 +1,6 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local builtin = require("telescope.builtin")
@@ -36,14 +35,6 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
-    opts = {
-      toggler = { line = "<leader>d" },
-      opleader = { line = "<leader>d" },
-    },
-    lazy = false,
-  },
-  {
     "williamboman/mason.nvim",
     opts = {},
   },
@@ -60,19 +51,21 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      lspconfig.lua_ls.setup({})
-      lspconfig.ruff.setup({})
-      lspconfig.clojure_lsp.setup({ capabilities = capabilities })
-      lspconfig.elixirls.setup({ cmd = { "elixir-ls" } })
 
-      local opts = {}
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+      local servers = { "lua_ls", "ruff", "clojure_lsp", "elixirls" }
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server, { capabilities = capabilities })
+      end
+      vim.lsp.enable(servers)
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>F", function()
         vim.lsp.buf.format({ async = true })
-      end, opts)
+      end, {})
+
+      vim.lsp.inlay_hint.enable()
     end,
   },
   {
@@ -156,7 +149,13 @@ return {
       vim.cmd("colorscheme tokyonight-night")
     end,
   },
-  { "Olical/conjure" },
+  {
+    "Olical/conjure",
+    init = function()
+      vim.g["conjure#filetypes"] = { "clojure", "fennel" }
+      vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+    end,
+  },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
