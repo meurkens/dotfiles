@@ -40,6 +40,9 @@ defaults write com.apple.dock autohide -bool true
 # Empty dock
 defaults delete com.apple.dock persistent-apps && killall Dock
 
+# Disable recent applications in dock
+defaults write com.apple.dock show-recents -bool false
+
 # TunnelBlick: Do not start on login
 defaults write net.tunnelblick.tunnelblick doNotLaunchOnLogin -bool yes
 
@@ -52,3 +55,28 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 # Save screenshots in folder
 mkdir -p ~/Screenshots
 defaults write com.apple.screencapture location -string ~/Screenshots
+
+# Enable Night Shift with schedule
+defaults write com.apple.CoreBrightness "CBBlueReductionStatus" -dict \
+    AutoBlueReductionEnabled -bool true \
+    BlueReductionEnabled -bool false \
+    BlueReductionMode -int 1 \
+    BlueReductionSunScheduleAllowed -bool true \
+    Version -int 1
+
+# Require password after 5 seconds after sreensaver
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 5
+
+# Enable firewall
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+
+# Set sidebar items
+sfltool clear
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file:///Applications/
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Dropbox/
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Desktop/
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Downloads/
+sfltool add-item com.apple.LSSharedFileList.FavoriteItems file:///System/Volumes/Data/
+

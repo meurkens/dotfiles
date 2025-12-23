@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+echo "Setting hostname "
+sudo scutil --set ComputerName "Kepler"
+sudo scutil --set HostName "Kepler"
+sudo scutil --set LocalHostName "Kepler"
+sudo dscacheutil -flushcache
+
 echo "Configuring dotfiles repo..."
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no

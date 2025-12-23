@@ -1,18 +1,9 @@
 System preferences:
-- Hostname
-- Night shift
-- Password after 5s
-- Remove 'show recent apps form Dock'
-- Turn on firewall
 - Turn on FileVault
 - Accept all accessories
 - Trackpad settings
-- Remove items from dock
-- Automatic updates
-- Finder sidebar items
 - Set wallpaper R118 G131 B150
 - Connect bluetooth keyboard
-- Install rectangle config
 - Start monitor control
 
 Apps:

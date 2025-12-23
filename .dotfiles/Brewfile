@@ -1,6 +1,3 @@
-tap 'homebrew/bundle'
-tap 'homebrew/services'
-
 cask 'dropbox'
 
 brew 'bat'
@@ -8,8 +5,6 @@ brew 'eza'
 brew 'fzf'
 brew 'git'
 brew 'gpg'
-brew 'hammerspoon'
-brew 'macvim'
 brew 'mas'
 brew 'mise'
 brew 'neovim'
@@ -28,28 +23,23 @@ cask 'emacs'
 cask 'figma'
 cask 'firefox'
 cask 'google-chrome'
+cask 'hammerspoon'
+cask 'iina'
 cask 'karabiner-elements'
 cask 'keepingyouawake'
 cask 'kitty'
 cask 'monitorcontrol' # for Dell monitor
-cask 'mullvadvpn'
 cask 'notion'
 cask 'slack'
 cask 'spotify'
 cask 'transmission'
 cask 'tunnelblick'
 cask 'visual-studio-code'
-cask 'vlc'
 cask 'whatsapp'
 
-brew 'subversion' # Needed for fonts
-cask 'font-source-code-pro'
-cask 'font-overpass'
 cask 'font-sauce-code-pro-nerd-font'
 
 mas "Ghostery Privacy Ad Blocker", id: 6504861501
-mas "Pixelmator", id: 407963104
-mas "Save to Pocket", id: 1477385213
 mas "Xcode", id: 497799835
 mas "Simplenote", id: 692867256
 mas "1Password for Safari", id: 1569813296
