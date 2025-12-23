@@ -9,20 +9,18 @@ sudo scutil --set LocalHostName "Kepler"
 sudo dscacheutil -flushcache
 
 echo "Configuring dotfiles repo..."
-alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+dotfiles() {
+  git --git-dir="$HOME/.dotfiles.git/" --work-tree="$HOME" "$@"
+}
 dotfiles config --local status.showUntrackedFiles no
 dotfiles remote remove origin
 dotfiles remote add origin git@github.com:meurkens/dotfiles
 
 echo "Installing homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle
 brew cleanup
-
-echo "Configuring git..."
-git config --global user.name "Stijn Meurkens"
-git config --global user.email meurkens@gmail.com
 
 echo "Configuring zsh as default shell..."
 if ! grep -q "/opt/homebrew/bin/zsh" /etc/shells; then
@@ -31,14 +29,14 @@ fi
 chsh -s /opt/homebrew/bin/zsh
 
 echo "Creating Code directory..."
-mkdir ~/Code
+mkdir -p ~/Code
 
 echo "Configuring macOS settings..."
 sh ~/.macos
 
 echo "Install programming languages..."
 cd
-eval "$(mise activate zsh)"
+eval "$(mise env -s bash)"
 mise install
 
 echo "Install nvim plugins..."
@@ -51,7 +49,7 @@ rm -rf ~/Music/iTunes
 ln -s ~/Dropbox/Appdata/iTunes ~/Music/
 
 echo "Linking private dotfiles..."
-find ~/Dropbox/Appdata/dotfiles -name "*.symlink" -exec sh -c 'ln -s {} ./."$(basename {} .symlink)"' \;
+find ~/Dropbox/Appdata/dotfiles -name "*.symlink" -exec sh -c 'ln -s "$1" "$HOME/.$(basename "$1" .symlink)"' _ {} \;
 
 echo "Linking further install instructions on Desktop..."
 ln -s "$HOME/.dotfiles/install.txt" ~/Desktop
