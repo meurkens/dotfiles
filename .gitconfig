@@ -8,3 +8,5 @@
   unpushed = log --branches --not --remotes --no-walk --decorate --oneline
 [init]
   defaultBranch = main
+[push]
+  autoSetupRemote = true
