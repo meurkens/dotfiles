@@ -71,7 +71,7 @@ defaults write com.apple.screensaver askForPasswordDelay -int 5
 # Enable firewall
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
-# Set sidebar items
+# Set Finder sidebar items
 sfltool clear
 sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/
 sfltool add-item com.apple.LSSharedFileList.FavoriteItems file:///Applications/
@@ -79,4 +79,7 @@ sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Dropbox/
 sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Desktop/
 sfltool add-item com.apple.LSSharedFileList.FavoriteItems file://~/Downloads/
 sfltool add-item com.apple.LSSharedFileList.FavoriteItems file:///System/Volumes/Data/
+
+# Show all file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
