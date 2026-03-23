@@ -7,6 +7,7 @@ export TERM=screen-256color
 alias vi=vim
 alias ls="ls -G"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias lazydot='lazygit --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias btreset="blueutil -p 0 && sleep 1 && blueutil -p 1"
 alias veracrypt="veracrypt -t"
 
