@@ -71,6 +71,7 @@ fi
 if which nvim > /dev/null 2>&1; then
   alias vim="nvim"
   alias n="nvim"
+  export EDITOR="nvim"
 fi
 
 unpushed() {
