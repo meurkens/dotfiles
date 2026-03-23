@@ -34,6 +34,7 @@ cask 'slack'
 cask 'spotify'
 cask 'transmission'
 cask 'tunnelblick'
+cask 'veracrypt-fuse-t'
 cask 'visual-studio-code'
 cask 'whatsapp'
 
