@@ -4,14 +4,13 @@ System preferences:
 - Trackpad settings
 - Set wallpaper R118 G131 B150
 - Connect bluetooth keyboard
-- Start monitor control
 
 Apps:
 - 1Password login
-- Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Pocket
-- Colorscheme terminal
+- Chrome plugins: 1Password, I don't care about cookies, uBlock origin, React devtools, Instapaper
 - Kanji
 - Start Karabiner
+- Start monitor control
 - Choosy; default Safari, best running browser, start at login
 
 Various:
